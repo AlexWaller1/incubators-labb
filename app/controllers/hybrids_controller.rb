@@ -24,8 +24,11 @@ class HybridsController < ApplicationController
 
     def update
         @hybrid = Hybrid.find(params[:id])
-        @hybrid.update(hybrid_params)
-        redirect_to hybrid_path(@hybrid)
+        if @hybrid.update(hybrid_params)
+         redirect_to hybrid_path(@hybrid)
+        else
+         render :edit
+        end
     end
 
     private

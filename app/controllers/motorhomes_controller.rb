@@ -24,8 +24,11 @@ class MotorhomesController < ApplicationController
 
     def update
         @motorhome = Motorhome.find(params[:id])
-        @motorhome.update(motorhome_params)
-        redirect_to motorhome_path(@motorhome)
+        if @motorhome.update(motorhome_params)
+         redirect_to motorhome_path(@motorhome)
+        else
+         render :edit
+        end
     end
 
     private
@@ -35,3 +38,6 @@ class MotorhomesController < ApplicationController
          end
 
 end
+
+#check back to validations-in-controller-actions-rails-labs 
+#for other private method to take care of repetitve code

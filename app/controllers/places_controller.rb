@@ -24,8 +24,11 @@ class PlacesController < ApplicationController
 
     def update
         @place = Place.find(params[:id])
-        @place.update(place_params)
-        redirect_to place_path(@place)
+        if @place.update(place_params)
+         redirect_to place_path(@place)
+        else
+         render :edit
+        end
     end
 
     private
@@ -35,3 +38,4 @@ class PlacesController < ApplicationController
          end
 
 end
+
