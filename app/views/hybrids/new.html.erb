@@ -1,1 +1,22 @@
 <h1>Present the Hybrid</h1>
+
+<%= form_for(@hybrid) do |f| %>
+<label>Hybrid Name:</label><br>
+<%= f.text_field :name %><br>
+
+<label>Hybrid Type</label><br>
+<%= f.text_field :type %><br>
+
+<label>Hybrid Personality</label><br>
+<%= f.text_field :personality %><br>
+
+<label>Hybrid Biography</label><br>
+<%= f.text_area :biography %><br>
+
+<label>Image of Hybrid</label><br>
+<%= f.text_field :image %><br>
+
+<%= f.submit %>
+
+<% end %>
+
