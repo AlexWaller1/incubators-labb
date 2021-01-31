@@ -1,0 +1,21 @@
+<h1>Report the Motorhome</h1>
+
+<%= form_for(@motorhome) do |f| %>
+<label>Motorhome Model</label><br>
+<%= f.text_field :model %><br>
+
+<label>Year</label><br>
+<%= f.integer :year %><br>
+
+<label>Features</label><br>
+<%= f.text_area :features %><br>
+
+<label>Mileage</label><br>
+<%= f.integer :mileage %><br>
+
+<label>Vehicle History</label><br>
+<%= f.text_area :history %><br>
+
+<%= f.submit %>
+
+<% end %>
