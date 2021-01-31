@@ -1,0 +1,22 @@
+<h1>Submit a Person of Interest</h1>
+
+<%= form_for(@friend) do |f| %>
+<label>Friend Name:</label><br>
+<%= f.text_field :name %><br>
+
+<label>Friend Type</label><br>
+<%= f.text_field :type %><br>
+
+<label>Friend Personality</label><br>
+<%= f.text_field :personality %><br>
+
+<label>Friend Biography</label><br>
+<%= f.text_area :biography %><br>
+
+<label>Image of Friend</label><br>
+<%= f.text_field :image %><br>
+
+<%= f.submit %>
+
+<% end %>
+
