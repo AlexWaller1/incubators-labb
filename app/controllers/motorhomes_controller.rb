@@ -1,0 +1,2 @@
+class MotorhomesController < ApplicationController
+end
