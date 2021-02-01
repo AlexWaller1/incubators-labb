@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root(to: "static#home")
   
   resources :hybrids do
     resources :friends
@@ -7,4 +8,11 @@ Rails.application.routes.draw do
     resources :places
   end
   # will nest these routes later
+  resources :users, only: [:new,:create]
+
+
+  
+  get "/logout", to: "sessions#logout", as: "logout"
+  get "/signup", to: "sessions#signup", as: "signup"
+  post "/signup", to: "sessions#create"
 end

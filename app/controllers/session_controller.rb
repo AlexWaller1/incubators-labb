@@ -1,21 +1,30 @@
 class SessionController < ApplicationController
     skip_before_action :verified_user, only: [:new, :create]
 
-    def new
+    def signup
         @user = User.new
     end
 
     def create
-        if @user = User.find_by(username: params[:users][:username])
+        @user = User.new(user_params)
+        if @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to hybrids_path
         else
-            render 'new'
+            @error = @user.errors.full_messages
+            render :signup
         end
     end
 
-    def destroy
-        session.delete(:user_id)
+    def logout
+        session.clear
         redirect_to root_path
     end
+
+    private
+
+    def user_params
+        params.require(:user).permit(:username, :password_digest)
+    end
+
 end

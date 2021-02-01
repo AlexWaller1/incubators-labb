@@ -6,17 +6,20 @@ class UsersController < ApplicationController
     end
 
     def create
-        if (user = User.create(user_params))
-            session[:user_id] = user.id
-            redirect_to user_path(user)
+        @user = User.find_by(username:params[:username])
+        if !@user
+            @error = "I'm sorry, that username is not on file."
+            render :login
+        elsif !user.authenticate(params[:password])
+            @error = "I'm sorry, that password is not on file."
+            render :login
         else
-            render 'new'
+            session[:user_id] = @user.id
+            redirect_to hybrids_path
         end
     end
 
-    def show
-        @user = User.find_by(id: params[:id])
-    end
+    
 
     private
 
