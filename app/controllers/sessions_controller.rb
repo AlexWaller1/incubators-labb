@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :verified_user, only: [:new, :create, :signup]
+    skip_before_action :verified_user, only: [:new, :create, :login]
 
     
 
@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
 
 
     def create
-        @user = User.find_by(username:params[:username])
+        @user = User.find_by(username:user_params[:username])
+        #binding.pry
         if !@user
             @error = "I'm sorry, that username is not on file."
-            render :login
-        elsif !user.authenticate(params[:password])
+            render :new
+        elsif !@user.authenticate(user_params[:password])
             @error = "I'm sorry, that password is not on file."
-            render :login
+            render :new
         else
             session[:user_id] = @user.id
             redirect_to hybrids_path
@@ -32,6 +33,6 @@ class SessionsController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :password_digest)
+        params.require(:user).permit(:username, :password)
     end
 end

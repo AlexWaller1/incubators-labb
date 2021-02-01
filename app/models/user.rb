@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-    #has_secure_password
-    validates :username, :password, presence: true
+    has_secure_password
+    validates :username, :password_digest, presence: true
     validates_uniqueness_of :username
     has_many :hybrids
     has_many :friends, through: :hybrids
