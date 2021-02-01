@@ -6,16 +6,13 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.find_by(username:params[:username])
-        if !@user
-            @error = "I'm sorry, that username is not on file."
-            render :login
-        elsif !user.authenticate(params[:password])
-            @error = "I'm sorry, that password is not on file."
-            render :login
-        else
+        @user = User.new(user_params)
+        if @user.save
             session[:user_id] = @user.id
             redirect_to hybrids_path
+        else
+            @error = @user.errors.full_messages
+            render :signup
         end
     end
 
@@ -26,4 +23,5 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:username, :password_digest)
     end
+
 end

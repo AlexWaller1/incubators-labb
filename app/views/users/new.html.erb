@@ -1,0 +1,19 @@
+<h1>Welcome to Antibi, Please Apply Here</h1>
+
+<%if @error %>
+  <% @error.each do |e|%>
+   <h1> <% e %> </h1>
+   <%end %>
+<%end %>
+
+<%= form_for @user, url:signup_path do |f| %>
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+  <div>
+    <%= f.label :password_digest %>
+    <%= f.password_field :password_digest %>
+  </div>
+  <%= f.submit "Signup" %>
+<% end %>
