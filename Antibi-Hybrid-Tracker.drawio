@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-02T16:50:01.503Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Safari/605.1.15" etag="s9AmmlWSV9tWRbdvQz8Y" version="14.1.8" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-02T16:53:55.342Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Safari/605.1.15" etag="-HVjXY3THbaIt9bSmiwz" version="14.1.8" type="github">
   <diagram id="pt387bTI_zJMgEDVQk4Z" name="Page-1">
     <mxGraphModel dx="914" dy="649" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -115,7 +115,7 @@
         <mxCell id="x5GTYXMU3bvm0a-iwEAM-25" value="Signup" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="210" y="25" width="110" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x5GTYXMU3bvm0a-iwEAM-26" value="login" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="x5GTYXMU3bvm0a-iwEAM-26" value="Login" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="225" y="215" width="90" height="50" as="geometry" />
         </mxCell>
         <mxCell id="x5GTYXMU3bvm0a-iwEAM-27" value="Hybrids Index Page" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
