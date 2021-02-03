@@ -3,3 +3,7 @@
 <h2><%= @friend.species %></h2>
 <p><%= @friend.personality %></p>
 <p><%= @friend.biography %></p>
+
+<% if current_user %>
+<%= link_to "Modify Friend Information", edit_hybrid_friend_path(@friend.hybrid, @friend)%>
+<% end %>

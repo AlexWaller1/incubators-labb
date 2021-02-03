@@ -1,6 +1,8 @@
 <h1>Please Give Correct Information</h1>
 
-<%= form_for(@friend) do |f| %>
+<%= form_for([@friend.hybrid, @friend]) do |f| %>
+<%= f.hidden_field :hybrid_id, value: @friend.hybrid_id %>
+
 <label>Friend Name:</label><br>
 <%= f.text_field :name %><br>
 

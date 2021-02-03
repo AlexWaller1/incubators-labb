@@ -27,7 +27,7 @@ class FriendsController < ApplicationController
     def update
         @friend = Friend.find(params[:id])
         if @friend.update(friend_params)
-         redirect_to friend_path(@friend)
+            redirect_to hybrid_friend_path(hybrid_id: @friend.hybrid_id, id: @friend.id)
         else
          render :edit
         end
