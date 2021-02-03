@@ -1,11 +1,12 @@
 <h1>Present the Hybrid</h1>
 
 <%= form_for(@hybrid) do |f| %>
+<%= f.hidden_field :user_id, value: @hybrid.user.id %>
 <label>Hybrid Name:</label><br>
 <%= f.text_field :name %><br>
 
 <label>Hybrid Type</label><br>
-<%= f.text_field :type %><br>
+<%= f.text_field :species %><br>
 
 <label>Hybrid Personality</label><br>
 <%= f.text_field :personality %><br>

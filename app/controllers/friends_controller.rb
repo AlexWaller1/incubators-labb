@@ -1,7 +1,8 @@
 class FriendsController < ApplicationController
 
     def index
-        @friends = Friend.all
+        hybrid = Hybrid.find(params[:hybrid_id])
+        @friends = hybrid.friends
     end
 
     def show
@@ -9,13 +10,14 @@ class FriendsController < ApplicationController
     end
 
     def new
-        @friend = Friend.new
+        @friend = Friend.new(hybrid_id: params[:hybrid_id])
     end
 
     def create
         @friend = Friend.new(friend_params)
+        #binding.pry
         @friend.save
-        redirect_to friend_path(@friend)
+        redirect_to hybrid_friend_path(hybrid_id: @friend.hybrid_id, id: @friend.id)
     end
 
     def edit
@@ -34,6 +36,6 @@ class FriendsController < ApplicationController
     private
 
          def friend_params
-            params.require(:friend).permit(:name)
+            params.require(:friend).permit(:name, :species, :personality, :biography, :image, :hybrid_id)
          end
 end

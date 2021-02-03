@@ -1,11 +1,13 @@
 <h1>Submit a Person of Interest</h1>
+<% #binding.pry %>
+<%= form_for ([@friend.hybrid, @friend]) do |f| %>
+<%= f.hidden_field :hybrid_id, value: @friend.hybrid_id%>
+<%= f.label :name, "Friend Name"%>
 
-<%= form_for(@friend) do |f| %>
-<label>Friend Name:</label><br>
 <%= f.text_field :name %><br>
 
 <label>Friend Type</label><br>
-<%= f.text_field :type %><br>
+<%= f.text_field :species %><br>
 
 <label>Friend Personality</label><br>
 <%= f.text_field :personality %><br>

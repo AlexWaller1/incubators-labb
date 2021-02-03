@@ -14,28 +14,31 @@ ActiveRecord::Schema.define(version: 2021_01_31_003929) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "species"
     t.string "personality"
     t.text "biography"
     t.string "image"
     t.integer "hybrid_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["hybrid_id"], name: "index_friends_on_hybrid_id"
   end
 
   create_table "hybrids", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "species"
     t.string "personality"
     t.text "biography"
     t.string "image"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_hybrids_on_user_id"
   end
 
   create_table "motorhomes", force: :cascade do |t|
     t.string "model"
+    t.string "image"
     t.integer "year"
     t.text "features"
     t.integer "mileage"
@@ -49,9 +52,11 @@ ActiveRecord::Schema.define(version: 2021_01_31_003929) do
     t.string "location"
     t.string "atmosphere"
     t.text "status"
+    t.string "image"
     t.integer "hybrid_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["hybrid_id"], name: "index_places_on_hybrid_id"
   end
 
   create_table "users", force: :cascade do |t|

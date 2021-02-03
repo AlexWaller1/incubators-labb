@@ -5,7 +5,8 @@ class CreatePlaces < ActiveRecord::Migration[6.1]
       t.string :location
       t.string :atmosphere
       t.text :status
-      t.integer :hybrid_id
+      t.string :image
+      t.references :hybrid
 
       t.timestamps
     end
