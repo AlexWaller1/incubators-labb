@@ -1,7 +1,8 @@
 class PlacesController < ApplicationController
 
     def index
-        @places = Place.all
+        hybrid = Hybrid.find(params[:hybrid_id])
+        @places = hybrid.places
     end
 
     def show
@@ -9,13 +10,13 @@ class PlacesController < ApplicationController
     end
 
     def new
-        @place = Place.new
+        @place = Place.new(hybrid_id: params[:hybrid_id])
     end
 
     def create
         @place = Place.new(place_params)
         @place.save
-        redirect_to place_path(@place)
+        redirect_to hybrid_place_path(hybrid_id: @place.hybrid_id, id: @place.id)
     end
 
     def edit
@@ -34,7 +35,7 @@ class PlacesController < ApplicationController
     private
 
          def place_params
-            params.require(:place).permit(:name)
+            params.require(:place).permit(:name, :location, :atmosphere, :status, :image, :hybrid_id)
          end
 
 end

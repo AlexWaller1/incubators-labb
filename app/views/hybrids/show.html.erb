@@ -4,7 +4,9 @@
 <p><%= @hybrid.personality %></p>
 <p><%= @hybrid.biography %></p>
 <%= link_to "Hybrid's Friends", hybrid_friends_path(@hybrid) %>
+<%= link_to "Places Hybrid Has Been", hybrid_places_path(@hybrid) %>
 
 <% if current_user %>
  <%= link_to "Submit New Friend", new_hybrid_friend_path(@hybrid) %>
+ <%= link_to "Submit New Place",  new_hybrid_place_path(@hybrid) %>
 <% end %>
