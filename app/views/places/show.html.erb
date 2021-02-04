@@ -4,6 +4,6 @@
 <h3><%= @place.atmosphere %></h3>
  <p><%= @place.status %></p>
 
- <% if current_user %>
+ <% if current_user == @place.hybrid.user %>
 <%= link_to "Modify Place Information", edit_hybrid_place_path(@place.hybrid, @place)%>
 <% end %>

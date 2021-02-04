@@ -4,6 +4,6 @@
 <p><%= @friend.personality %></p>
 <p><%= @friend.biography %></p>
 
-<% if current_user %>
+<% if current_user == @friend.hybrid.user %>
 <%= link_to "Modify Friend Information", edit_hybrid_friend_path(@friend.hybrid, @friend)%>
 <% end %>
