@@ -1,1 +1,6 @@
 <h1>Hybrids</h1>
+<% @hybrids.each do |f| %>
+<h2><%= link_to f.name, hybrid_path(f) %></h2>
+<h3><%= f.species %></h3>
+<img src="<%= f.image %>" alt="Hybrid Image">
+<% end %>

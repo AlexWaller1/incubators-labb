@@ -26,7 +26,7 @@ class PlacesController < ApplicationController
     def update
         @place = Place.find(params[:id])
         if @place.update(place_params)
-         redirect_to place_path(@place)
+         redirect_to hybrid_place_path(hybrid_id: @place.hybrid_id, id: @place.id)
         else
          render :edit
         end

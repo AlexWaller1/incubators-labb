@@ -3,3 +3,7 @@
 <img src="<%= @place.image %>" alt="Place Image">
 <h3><%= @place.atmosphere %></h3>
  <p><%= @place.status %></p>
+
+ <% if current_user %>
+<%= link_to "Modify Place Information", edit_hybrid_place_path(@place.hybrid, @place)%>
+<% end %>

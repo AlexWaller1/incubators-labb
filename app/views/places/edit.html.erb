@@ -1,16 +1,21 @@
 <h1>Modify Your Report</h1>
 
-<%= form_for(@place) do |f| %>
-<label>Name of Place</label><br>
+<%= form_for ([@place.hybrid, @place]) do |f| %>
+<%= f.hidden_field :hybrid_id, value: @place.hybrid_id %>
+
+<%= f.label :name, "Name" %><br>
 <%= f.text_field :name %><br>
 
-<label>Location</label><br>
+<%= f.label :location, "Location" %><br>
 <%= f.text_field :location %><br>
 
-<label>Atmosphere</label><br>
+<%= f.label :atmosphere, "Atmosphere" %><br>
 <%= f.text_field :atmosphere %><br>
 
-<label>Status</label><br>
+<%= f.label :image, "Image" %><br>
+<%= f.text_field :image %><br>
+
+<%= f.label :status, "Status" %><br>
 <%= f.text_area :status %><br>
 
 
