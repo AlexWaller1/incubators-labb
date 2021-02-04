@@ -47,9 +47,13 @@ class HybridsController < ApplicationController
 
     def destroy
         @hybrid = Hybrid.find(params[:id])
-        @hybrid.destroy
-        flash[:notice] = "Hybrid Deleted"
-        redirect_to hybrids_path
+        if current_user == @hybrid.user
+          @hybrid.destroy
+          flash[:notice] = "Hybrid Scrubbed from Database"
+          redirect_to hybrids_path
+        else
+          redirect_to hybrids_path
+        end
     end
 
 
