@@ -6,4 +6,5 @@
 
 <% if current_user == @friend.hybrid.user %>
 <%= link_to "Modify Friend Information", edit_hybrid_friend_path(@friend.hybrid, @friend)%>
+<%= link_to "Scrub Friend Information", hybrid_friend_path(@friend.hybrid, @friend), method: "delete" %>
 <% end %>
