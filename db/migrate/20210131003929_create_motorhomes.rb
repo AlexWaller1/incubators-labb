@@ -7,6 +7,7 @@ class CreateMotorhomes < ActiveRecord::Migration[6.1]
       t.text :features
       t.integer :mileage
       t.text :history
+      t.references :hybrid
 
 
       t.timestamps

@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(version: 2021_01_31_003929) do
     t.text "features"
     t.integer "mileage"
     t.text "history"
+    t.integer "hybrid_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["hybrid_id"], name: "index_motorhomes_on_hybrid_id"
   end
 
   create_table "places", force: :cascade do |t|
