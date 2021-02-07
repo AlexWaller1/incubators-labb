@@ -1,17 +1,19 @@
 <h1>Repair the Motorhome</h1>
 
-<%= form_for(@motorhome) do |f| %>
+<%= form_for([@motorhome.hybrid, @motorhome]) do |f| %>
+<%= f.hidden_field :hybrid_id, value: @motorhome.hybrid_id %>
+
 <label>Motorhome Model</label><br>
 <%= f.text_field :model %><br>
 
 <label>Year</label><br>
-<%= f.integer :year %><br>
+<%= f.text_field :year %><br>
 
 <label>Features</label><br>
 <%= f.text_area :features %><br>
 
 <label>Mileage</label><br>
-<%= f.integer :mileage %><br>
+<%= f.text_area :mileage %><br>
 
 <label>Vehicle History</label><br>
 <%= f.text_area :history %><br>
