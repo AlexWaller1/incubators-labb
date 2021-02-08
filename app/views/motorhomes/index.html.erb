@@ -1,5 +1,9 @@
 <h1>Motorhomes</h1>
 
 <% @motorhomes.each do |f| %>
-<h3><%= link_to f.model, hybrid_motorhome_path(f.hybrid, f) %></h3>
+<h2><%= link_to f.model, hybrid_motorhome_path(f.hybrid, f) %></h2>
+<h3><%= f.year %></h3>
+<h3><%= f.mileage %></h3>
+<img src="<%= f.image %>" alt="Motorhome Image">
+
 <% end %>

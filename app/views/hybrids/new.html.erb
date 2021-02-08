@@ -3,19 +3,19 @@
 <%= form_for(@hybrid) do |f| %>
 <%= f.hidden_field :user_id, value: @hybrid.user.id %>
 
-<label>Hybrid Name:</label><br>
+<%= f.label :name, "Hybrid Name" %><br>
 <%= f.text_field :name %><br>
 
-<label>Hybrid Type</label><br>
+<%= f.label :species, "Hybrid Species" %><br>
 <%= f.text_field :species %><br>
 
-<label>Hybrid Personality</label><br>
+<%= f.label :personality, "Hybrid Personality" %><br>
 <%= f.text_field :personality %><br>
 
-<label>Hybrid Biography</label><br>
+<%= f.label :biography, "Hybrid Biography" %><br>
 <%= f.text_area :biography %><br>
 
-<label>Image of Hybrid</label><br>
+<%= f.label :image, "Hybrid Image" %><br>
 <%= f.text_field :image %><br>
 
 <%= f.submit %>

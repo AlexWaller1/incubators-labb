@@ -3,20 +3,23 @@
 <%= form_for([@motorhome.hybrid, @motorhome]) do |f| %>
 <%= f.hidden_field :hybrid_id, value: @motorhome.hybrid_id %>
 
-<label>Motorhome Model</label><br>
+<%= f.label :model, "Vehicle Model" %><br>
 <%= f.text_field :model %><br>
 
-<label>Year</label><br>
+<%= f.label :year, "Vehicle Year" %><br>
 <%= f.text_field :year %><br>
 
-<label>Features</label><br>
+<%= f.label :featues, "Features" %><br>
 <%= f.text_area :features %><br>
 
-<label>Mileage</label><br>
+<%= f.label :mileage, "Mileage" %><br>
 <%= f.text_area :mileage %><br>
 
-<label>Vehicle History</label><br>
+<%= f.label :history, "History" %><br>
 <%= f.text_area :history %><br>
+
+<%= f.label :image, "Vehicle Image" %><br>
+<%= f.text_field :image %><br>
 
 <%= f.submit %>
 

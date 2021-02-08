@@ -1,8 +1,9 @@
 <h1><%= @motorhome.model %></h1>
 <h2><%= @motorhome.year %></h2>
 <h3><%= @motorhome.mileage %></h3>
-<p><%= @motorhome.features %></p>
-<p><%= @motorhome.history %></p>
+<img src="<%= @motorhome.image %>" alt="Motorhome Image">
+<h4><%= @motorhome.features %></h4>
+<h4><%= @motorhome.history %></h4>
 
 <% if current_user == @motorhome.hybrid.user %>
 <%= link_to "Modify Motorhome Information", edit_hybrid_motorhome_path(@motorhome.hybrid, @motorhome) %>
