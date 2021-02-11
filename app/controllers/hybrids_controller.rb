@@ -13,7 +13,7 @@ class HybridsController < ApplicationController
     end
 
     def create
-        @hybrid = Hybrid.new(hybrid_params)
+       @hybrid = Hybrid.new(hybrid_params)
         #binding.pry
        if @hybrid.save
         redirect_to hybrid_path(@hybrid)
