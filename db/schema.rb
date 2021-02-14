@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_31_003929) do
+ActiveRecord::Schema.define(version: 2021_02_14_062438) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2021_01_31_003929) do
     t.index ["user_id"], name: "index_hybrids_on_user_id"
   end
 
+  create_table "minimarts", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "sodamachine"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "motorhomes", force: :cascade do |t|
     t.string "model"
     t.string "image"
@@ -59,6 +68,15 @@ ActiveRecord::Schema.define(version: 2021_01_31_003929) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["hybrid_id"], name: "index_places_on_hybrid_id"
+  end
+
+  create_table "sodas", force: :cascade do |t|
+    t.string "name"
+    t.string "company"
+    t.string "availability"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

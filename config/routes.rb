@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :motorhomes
     resources :places
   end
+
+  resources :minimarts
   # will nest these routes later
   resources :users, only: [:new,:create]
 
