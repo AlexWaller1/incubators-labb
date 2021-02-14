@@ -18,6 +18,7 @@ class HybridsController < ApplicationController
        if @hybrid.save
         redirect_to hybrid_path(@hybrid)
        else
+        @error = "Hybrid Must Have Name Entered."
         render :new
        end
     end
@@ -38,6 +39,7 @@ class HybridsController < ApplicationController
          if @hybrid.update(hybrid_params)
           redirect_to hybrid_path(@hybrid)
          else
+          @error = "Hybrid Name Must Be Entered."
           render :edit
         end
         else

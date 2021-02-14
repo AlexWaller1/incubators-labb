@@ -38,6 +38,7 @@ class PlacesController < ApplicationController
          if @place.update(place_params)
           redirect_to hybrid_place_path(hybrid_id: @place.hybrid_id, id: @place.id)
          else
+          @error = "Place Must Have Name Entered."
           render :edit
          end
         else

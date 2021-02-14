@@ -1,5 +1,7 @@
 <h1>Present the Hybrid</h1>
 
+<h4><%= @error %></h4>
+
 <%= form_for(@hybrid) do |f| %>
 <%= f.hidden_field :user_id, value: @hybrid.user.id %>
 
