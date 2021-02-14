@@ -15,8 +15,12 @@ class PlacesController < ApplicationController
 
     def create
         @place = Place.new(place_params)
-        @place.save
+       if @place.save
         redirect_to hybrid_place_path(hybrid_id: @place.hybrid_id, id: @place.id)
+       else
+        @error = "Must Have Place Name For Proper Submission."
+        render :new
+       end
     end
 
     def edit

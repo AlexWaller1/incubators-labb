@@ -16,8 +16,12 @@ class FriendsController < ApplicationController
     def create
         @friend = Friend.new(friend_params)
         #binding.pry
-        @friend.save
+       if @friend.save
         redirect_to hybrid_friend_path(hybrid_id: @friend.hybrid_id, id: @friend.id)
+       else
+        @error = "Hybrid's Friend Must Have Name Entered."
+        render :new
+       end
     end
 
     def edit
@@ -35,6 +39,7 @@ class FriendsController < ApplicationController
          if @friend.update(friend_params)
           redirect_to hybrid_friend_path(hybrid_id: @friend.hybrid_id, id: @friend.id)
          else
+         @error = "Hybrid's Friend Must Have Name Entered."
          render :edit
          end
         else

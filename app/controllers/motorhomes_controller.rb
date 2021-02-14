@@ -15,8 +15,12 @@ class MotorhomesController < ApplicationController
 
     def create
         @motorhome = Motorhome.new(motorhome_params)
-        @motorhome.save
+       if @motorhome.save
         redirect_to hybrid_motorhome_path(hybrid_id: @motorhome.hybrid_id, id: @motorhome.id)
+       else
+        @error = "Motorhome Model Must Be Entered For Submission."
+        render :new
+       end
     end
 
     def edit
@@ -34,6 +38,7 @@ class MotorhomesController < ApplicationController
          if @motorhome.update(motorhome_params)
           redirect_to hybrid_motorhome_path(hybrid_id: @motorhome.hybrid_id, id: @motorhome.id)
         else
+         @error = "Motorhomes Must Have Model Type Entered."
          render :edit
         end
        else

@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_01_31_003929) do
     t.string "image"
     t.integer "year"
     t.text "features"
-    t.integer "mileage"
+    t.string "mileage"
     t.text "history"
     t.integer "hybrid_id"
     t.datetime "created_at", precision: 6, null: false
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_01_31_003929) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
+    t.integer "uid", limit: 8
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

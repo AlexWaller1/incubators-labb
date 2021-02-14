@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     def create
         @user = User.find_by(username:user_params[:username])
         #binding.pry
-        if !@user
+        if !@user || user_params.empty?
             @error = "I'm sorry, that username is not on file."
             render :new
         elsif !@user.authenticate(user_params[:password])
@@ -28,11 +28,16 @@ class SessionsController < ApplicationController
         redirect_to root_path
     end
 
+   
+
 
 
     private
 
+    
+
     def user_params
         params.require(:user).permit(:username, :password)
     end
+    
 end

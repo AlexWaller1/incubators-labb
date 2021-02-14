@@ -1,1 +1,12 @@
 <h1> Welcome to Antibi Headquarters </h1>
+
+<img src="https://cdna.artstation.com/p/assets/images/images/033/353/680/4k/alex-waller-hybridspage5.jpg?1609295970">
+
+<% if session[:user_id] %>
+  
+  
+  <h2>Facebook UID: <%= @user.uid %></h2>
+  
+<% else %>
+  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<% end %> 

@@ -1,5 +1,7 @@
 <h1>Please Give Correct Information</h1>
 
+<h4><%= @error %></h4>
+
 <%= form_for([@friend.hybrid, @friend]) do |f| %>
 <%= f.hidden_field :hybrid_id, value: @friend.hybrid_id %>
 

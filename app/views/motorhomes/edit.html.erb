@@ -1,5 +1,7 @@
 <h1>Repair the Motorhome</h1>
 
+<h4><%= @error %></h4>
+
 <%= form_for([@motorhome.hybrid, @motorhome]) do |f| %>
 <%= f.hidden_field :hybrid_id, value: @motorhome.hybrid_id %>
 

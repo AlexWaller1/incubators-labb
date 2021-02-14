@@ -1,5 +1,7 @@
 <h1>Submit Your Report</h1>
 
+<h4><%= @error %></h4>
+
 <%= form_for ([@place.hybrid, @place]) do |f| %>
 <%= f.hidden_field :hybrid_id, value: @place.hybrid_id %>
 
