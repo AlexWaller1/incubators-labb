@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   resources :hybrids do
     resources :friends
     resources :motorhomes
-    resources :places
+    resources :places, :controller => 'hybrid_places'
   end
-
-  resources :minimarts
+  resources :places
+  
   # will nest these routes later
   resources :users, only: [:new,:create]
 

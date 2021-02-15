@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_062438) do
+ActiveRecord::Schema.define(version: 2021_02_15_170314) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2021_02_14_062438) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["hybrid_id"], name: "index_friends_on_hybrid_id"
+  end
+
+  create_table "hybrid_places", force: :cascade do |t|
+    t.integer "hybrid_id"
+    t.integer "place_id"
+    t.string "address", null: false
+    t.index ["hybrid_id"], name: "index_hybrid_places_on_hybrid_id"
+    t.index ["place_id"], name: "index_hybrid_places_on_place_id"
   end
 
   create_table "hybrids", force: :cascade do |t|
@@ -64,10 +72,8 @@ ActiveRecord::Schema.define(version: 2021_02_14_062438) do
     t.string "atmosphere"
     t.text "status"
     t.string "image"
-    t.integer "hybrid_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["hybrid_id"], name: "index_places_on_hybrid_id"
   end
 
   create_table "sodas", force: :cascade do |t|

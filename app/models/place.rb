@@ -1,4 +1,6 @@
 class Place < ActiveRecord::Base
     validates :name, presence: true
-    belongs_to :hybrid
+    has_many :hybrid_places
+    has_many :hybrids, through: :hybrid_places
+    
 end

@@ -1,9 +1,17 @@
-<h1>Modify Your Report</h1>
+<h1>Submit Your Report</h1>
 
 <h4><%= @error %></h4>
 
-<%= form_for (@place) do |f| %>
+<%= form_for ([@hybrid, @hybrid.places.new]) do |f| %>
+<%= f.hidden_field :hybrid_id, value: @hybrid.id %>
+<%= f.fields_for :places do |ff| %>
+   <% Place.all.each do |place| %>
 
+   <%= ff.check_box :ids, {multiple: true, checked: @hybrid.places.where(id: place.id).exists?}, place.id %>
+   <span><%= place.name %></span>
+    <% end %>
+  <% end %>
+<br>
 
 <%= f.label :name, "Name" %><br>
 <%= f.text_field :name %><br>

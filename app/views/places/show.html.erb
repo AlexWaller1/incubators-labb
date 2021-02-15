@@ -4,7 +4,9 @@
 <h3><%= @place.atmosphere %></h3>
  <h4><%= @place.status %></h4>
 
- <% if current_user == @place.hybrid.user %>
-<%= link_to "Modify Place Information", edit_hybrid_place_path(@place.hybrid, @place)%>
-<%= link_to "Scrub Place Information", hybrid_place_path(@place.hybrid, @place), method: "delete" %>
+ 
+<%= link_to "Modify Place Information", edit_place_path( @place)%>
+<%= link_to "Scrub Place Information", place_path(@place), method: "delete" %>
+<% @place.hybrids.each do |hybrid| %>
+<h4><%= link_to hybrid.name, hybrid_path(hybrid) %></h4>
 <% end %>

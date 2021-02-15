@@ -1,8 +1,9 @@
 class PlacesController < ApplicationController
 
     def index
-        hybrid = Hybrid.find(params[:hybrid_id])
-        @places = hybrid.places
+
+        @places = Place.all
+        
     end
 
     def show
@@ -10,57 +11,49 @@ class PlacesController < ApplicationController
     end
 
     def new
-        @place = Place.new(hybrid_id: params[:hybrid_id])
+        @place = Place.new
     end
 
     def create
         @place = Place.new(place_params)
-       if @place.save
-        redirect_to hybrid_place_path(hybrid_id: @place.hybrid_id, id: @place.id)
-       else
-        @error = "Must Have Place Name For Proper Submission."
-        render :new
-       end
+        @place.save
+        redirect_to place_path(@place)
+        
+        
     end
 
     def edit
         @place = Place.find(params[:id])
-        if current_user == @place.hybrid.user
+        
             render :edit
-        else
-            redirect_to hybrid_place_path(@place.hybrid, @place)
-        end
+        
     end
 
     def update
         @place = Place.find(params[:id])
-        if current_user == @place.hybrid.user
+        
          if @place.update(place_params)
-          redirect_to hybrid_place_path(hybrid_id: @place.hybrid_id, id: @place.id)
+          redirect_to place_path(@place.id)
          else
           @error = "Place Must Have Name Entered."
           render :edit
          end
-        else
-            redirect_to hybrid_place_path(@place.hybrid, @place)
-        end
+        
     end
 
     def destroy
         @place = Place.find(params[:id])
-        if current_user == @place.hybrid.user
+        
             @place.destroy
             flash[:notice] = "Place Scrubbed from Database"
-            redirect_to hybrid_places_path
-        else
-            redirect_to hybrid_places_path
-        end
+            redirect_to places_path
+        
     end
 
     private
 
          def place_params
-            params.require(:place).permit(:name, :location, :atmosphere, :status, :image, :hybrid_id)
+            params.require(:place).permit(:name, :location, :atmosphere, :status, :image, :hybrid_id, places: [ids: []])
          end
 
 end

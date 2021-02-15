@@ -1,4 +1,3 @@
-<h1>Places</h1>
-<% @places.each do |f| %>
-<h3><%= link_to f.name, hybrid_place_path(f.hybrid, f) %></h3>
+<% @places.each do |place| %>
+<%= link_to place.name, place_path(place)%>
 <% end %>
