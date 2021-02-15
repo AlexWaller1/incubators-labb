@@ -1,1 +1,7 @@
 <h1> Minimarts </h1>
+
+<% @minimarts.each do |f| %>
+<h2><%= link_to f.name, minimart_path(f) %></h2>
+<h3><%= f.availability %></h3>
+<img src="<%= f.image %>" alt="Soda Image">
+<% end %>

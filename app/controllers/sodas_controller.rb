@@ -30,6 +30,12 @@ class SodasController < ApplicationController
     end
 
     def delete
+        @soda = Soda.find(params[:id])
+        @soda.destroy
     end
+
+    private
+
+    params.require(:soda).permit(:name, :company, :availability, :description)
 
 end
