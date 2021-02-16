@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get "/signup", to: "users#new", as: "signup"
   post "/signup", to: "users#create"
   get '/auth/facebook', to: "facebook#create"
+  #match '*a', :to => "static#home", via: [:get]
+  get '*a', to: redirect('/')
 end

@@ -1,4 +1,4 @@
 <h1>Places</h1>
-<% @places.each do |place| %>
-<h3><%= link_to place.name, place_path(place) %><%= link_to "delete", hybrid_place_path(hybrid_id: @hybrid.id, id: place.id), method: :delete %></h3>
+<% @hybrid_places.each do |hybrid_place| %>
+<h3><%= link_to hybrid_place.place.name, place_path(hybrid_place.place) %> <%= link_to "delete", hybrid_place_path(id: hybrid_place.id), method: :delete %></h3>
 <% end %>

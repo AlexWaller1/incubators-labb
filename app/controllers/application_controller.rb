@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
+    rescue_from ActionController::RoutingError, with: :redirect_to_home_page
     before_action :verified_user
     helper_method :current_user
 
@@ -17,5 +18,9 @@ class ApplicationController < ActionController::Base
 
     def current_user
         User.find_by(id: session[:user_id])
+    end
+
+    def redirect_to_home_page
+        redirect_to root_path
     end
 end
