@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   get '/auth/facebook', to: "facebook#create"
   #match '*a', :to => "static#home", via: [:get]
+  match '/auth/:google_oauth2/callback' => 'sessions#google', via: [:get, :post]
   get '*a', to: redirect('/')
+  
 end
