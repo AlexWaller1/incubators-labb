@@ -1,4 +1,5 @@
 <%= form_for(@hybrid) do |f| %>
+<%= f.hidden_field :user_id, value: @hybrid.user.id %>
 
 <%= f.label :name, "Hybrid Name" %><br>
 <%= f.text_field :name %><br>
