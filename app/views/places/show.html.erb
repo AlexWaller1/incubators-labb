@@ -5,8 +5,10 @@
  <h4><%= @place.status %></h4>
 
  
-<%= link_to "Modify Place Information", edit_place_path( @place)%>
-<%= link_to "Scrub Place Information", place_path(@place), method: "delete" %>
+<h4><%= link_to "Modify Place Information", edit_place_path( @place)%></h4>
+<h4><%= link_to "Scrub Place Information", place_path(@place), method: "delete" %></h4>
+
+<h2> Hybrids Who Have Been To This Location </h2>
 <% @place.hybrids.each do |hybrid| %>
 <h4><%= link_to hybrid.name, hybrid_path(hybrid) %></h4>
 <% end %>

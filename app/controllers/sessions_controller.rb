@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :verified_user, only: [:new, :create, :login]
+    skip_before_action :verified_user, only: [:new, :create, :login, :google]
 
     
 
@@ -32,6 +32,7 @@ class SessionsController < ApplicationController
        @user = User.find_or_create_by(username: auth['info']['name']) do |user|
           user.password = SecureRandom.hex(10)
         end
+       
         if @user && @user.id 
             session[:user_id] = @user.id
             redirect_to hybrids_path
