@@ -6,6 +6,5 @@ class User < ActiveRecord::Base
     has_many :friends, through: :hybrids
     has_many :places, through: :hybrids
     has_many :motorhomes, through: :hybrids
-    has_many :sodas
-    has_many :minimarts
+    
 end
