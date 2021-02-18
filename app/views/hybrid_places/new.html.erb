@@ -5,8 +5,9 @@
 <%= form_for (@hybrid_place) do |f| %>
 <%= f.hidden_field :hybrid_id, value: @hybrid_place.hybrid_id %>
 
-<%= f.select :place_id, Place.all.map{|p| [p.name, p.id]} %>
-<%= f.text_field :address %>
+<%= f.select :place_id, Place.all.map{|p| [p.name, p.id]} %><br>
+
+<%= f.text_field :address %><br>
 
 
 <%= f.submit %>

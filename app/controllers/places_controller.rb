@@ -16,8 +16,12 @@ class PlacesController < ApplicationController
 
     def create
         @place = Place.new(place_params)
-        @place.save
+        if @place.save
         redirect_to place_path(@place)
+        else
+            @error = "Place Must Have A Name Entered."
+            render :new
+        end
         
         
     end

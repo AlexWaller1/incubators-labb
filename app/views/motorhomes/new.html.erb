@@ -2,27 +2,4 @@
 
 <h4><%= @error %></h4>
 
-<%= form_for([@motorhome.hybrid, @motorhome]) do |f| %>
-<%= f.hidden_field :hybrid_id, value: @motorhome.hybrid_id %>
-
-<%= f.label :model, "Motorhome Model" %><br>
-<%= f.text_field :model %><br>
-
-<%= f.label :year, "Motorhome Year" %><br>
-<%= f.text_field :year %><br>
-
-<%= f.label :features, "Motorhome Features" %><br>
-<%= f.text_area :features %><br>
-
-<%= f.label :mileage, "Motorhome Mileage" %><br>
-<%= f.text_field :mileage %><br>
-
-<%= f.label :history, "Motorhome History" %><br>
-<%= f.text_area :history %><br>
-
-<%= f.label :image, "Motorhome Image" %><br>
-<%= f.text_field :image %><br>
-
-<%= f.submit %>
-
-<% end %>
+<%= render "form" %>

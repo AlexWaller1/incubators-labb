@@ -1,22 +1,5 @@
-<%= form_for (@place) do |f| %>
+<h1> Submit New Place To The Database </h1>
 
+<h4> <%= @error %> </h4>
 
-<%= f.label :name, "Name" %><br>
-<%= f.text_field :name %><br>
-
-<%= f.label :location, "Location" %><br>
-<%= f.text_field :location %><br>
-
-<%= f.label :atmosphere, "Atmosphere" %><br>
-<%= f.text_field :atmosphere %><br>
-
-<%= f.label :image, "Image" %><br>
-<%= f.text_field :image %><br>
-
-<%= f.label :status, "Status" %><br>
-<%= f.text_area :status %><br>
-
-
-<%= f.submit %>
-
-<% end %>
+<%= render "form" %>
