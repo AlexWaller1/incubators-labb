@@ -27,29 +27,37 @@ class PlacesController < ApplicationController
     end
 
     def edit
-        @place = Place.find(params[:id])
-        
-            render :edit
+         @place = Place.find(params[:id])
+         if current_user == @place.user
+           render :edit
+         else
+            redirect_to place_path(@place)
+         end
         
     end
 
     def update
         @place = Place.find(params[:id])
-        
+        if current_user == @place.user
          if @place.update(place_params)
           redirect_to place_path(@place.id)
          else
           @error = "Place Must Have Name Entered."
           render :edit
          end
+        else
+            redirect_to places_path
+        end
         
     end
 
     def destroy
         @place = Place.find(params[:id])
-        
+           if current_user == @place.user
             @place.destroy
             flash[:notice] = "Place Scrubbed from Database"
+            redirect_to places_path
+           else
             redirect_to places_path
         
     end
