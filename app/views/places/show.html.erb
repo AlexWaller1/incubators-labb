@@ -3,6 +3,10 @@
 <img src="<%= @place.image %>" alt="Place Image">
 <h3><%= @place.atmosphere %></h3>
  <h4><%= @place.status %></h4>
+ <% @hybrid_places.each do |hybrid_place| %>
+ <h4><%= hybrid_place.address %> </h4>
+ <% end %>
+
 
  
 <h4><%= link_to "Modify Place Information", edit_place_path( @place)%></h4>

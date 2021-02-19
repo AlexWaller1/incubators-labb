@@ -5,7 +5,10 @@ class HybridsController < ApplicationController
     end
 
     def show
+        
         @hybrid = Hybrid.find_by(id: params[:id])
+        @hybrids = Hybrid.ram_hybrids
+        
         if @hybrid
             render :show
         else

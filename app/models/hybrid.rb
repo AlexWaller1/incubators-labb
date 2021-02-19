@@ -6,4 +6,6 @@ class Hybrid < ActiveRecord::Base
     has_many :places, through: :hybrid_places
     has_many :motorhomes
     accepts_nested_attributes_for :places
+
+    scope :ram_hybrids, -> { where(species: "Ram Hybrid") }
 end

@@ -8,6 +8,7 @@ class PlacesController < ApplicationController
 
     def show
         @place = Place.find_by(id: params[:id])
+        @hybrid_places = HybridPlace.where(place: @place)
         if @place
             render :show
         else
@@ -20,7 +21,7 @@ class PlacesController < ApplicationController
     end
 
     def create
-        @place = Place.new(place_params)
+        @place = Place.new(place_params.merge(user: current_user))
         if @place.save
         redirect_to place_path(@place)
         else

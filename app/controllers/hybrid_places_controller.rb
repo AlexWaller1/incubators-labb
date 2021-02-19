@@ -26,11 +26,15 @@ class HybridPlacesController < ApplicationController
     end
 
     def edit
-        hybrid = Hybrid.find(params[:hybrid_id])
-        @hybrid_place = HybridPlace.find(hybrid: hybrid)
+        
+        @hybrid_place = HybridPlace.find(params[:id])
     end
 
     def update
+        @hybrid_place = HybridPlace.find(params[:id])
+        @hybrid_place.update(hybrid_place_params)
+        redirect_to hybrid_places_path(@hybrid_place.hybrid_id)
+
     end
 
     def destroy
