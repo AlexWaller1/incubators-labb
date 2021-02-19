@@ -5,7 +5,12 @@ class HybridsController < ApplicationController
     end
 
     def show
-        @hybrid = Hybrid.find(params[:id])
+        @hybrid = Hybrid.find_by(id: params[:id])
+        if @hybrid
+            render :show
+        else
+            redirect_to hybrids_path
+        end
     end
 
     def new

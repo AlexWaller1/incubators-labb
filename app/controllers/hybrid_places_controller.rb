@@ -6,6 +6,8 @@ class HybridPlacesController < ApplicationController
         @hybrid_places = @hybrid.hybrid_places
     end
 
+    
+
     def new
         hybrid = Hybrid.find(params[:hybrid_id])
         @hybrid_place = HybridPlace.new(hybrid: hybrid)
@@ -21,6 +23,14 @@ class HybridPlacesController < ApplicationController
              render :new
         end
         
+    end
+
+    def edit
+        hybrid = Hybrid.find(params[:hybrid_id])
+        @hybrid_place = HybridPlace.find(hybrid: hybrid)
+    end
+
+    def update
     end
 
     def destroy

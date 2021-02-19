@@ -6,7 +6,13 @@ class FriendsController < ApplicationController
     end
 
     def show
-        @friend = Friend.find(params[:id])
+        @friend = Friend.find_by(id: params[:id])
+        if @friend
+            render :show
+        else
+            redirect_to hybrid_friends_path
+        end
+
     end
 
     def new

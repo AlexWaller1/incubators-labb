@@ -6,7 +6,12 @@ class MotorhomesController < ApplicationController
     end
 
     def show
-        @motorhome = Motorhome.find(params[:id])
+        @motorhome = Motorhome.find_by(id: params[:id])
+        if @motorhome
+            render :show
+        else
+            redirect_to hybrid_motorhomes_path
+        end
     end
 
     def new
