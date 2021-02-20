@@ -7,6 +7,7 @@
 
 <%= f.select :place_id, Place.all.map{|p| [p.name, p.id]} %><br>
 
+<%= f.label :address, "Address of Hybrid"%>
 <%= f.text_field :address %><br>
 
 

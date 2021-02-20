@@ -6,7 +6,10 @@ class HybridPlacesController < ApplicationController
         @hybrid_places = @hybrid.hybrid_places
     end
 
-    
+    def show
+        @hybrid_place = HybridPlace.find(params[:id])
+        redirect_to edit_hybrid_place_path
+    end
 
     def new
         hybrid = Hybrid.find(params[:hybrid_id])
@@ -28,20 +31,37 @@ class HybridPlacesController < ApplicationController
     def edit
         
         @hybrid_place = HybridPlace.find(params[:id])
+        if current_user = @hybrid_place.hybrid.user
+            render :edit
+        else
+            redirect_to hybrid_places_path
+        end
     end
 
     def update
         @hybrid_place = HybridPlace.find(params[:id])
-        @hybrid_place.update(hybrid_place_params)
-        redirect_to hybrid_places_path(@hybrid_place.hybrid_id)
+        if current_user = @hybrid_place.hybrid.user
+         if @hybrid_place.update(hybrid_place_params)
+            redirect_to hybrid_places_path(@hybrid_place.hybrid_id)
+         else
+            @error = "Place Must Have Address Entered."
+            render :edit
+         end
+        else
+            redirect_to hybrid_places_path
+        end
 
     end
 
     def destroy
         hybrid_place = HybridPlace.find(params[:id])
         hybrid = hybrid_place.hybrid
-        hybrid_place.destroy
-        redirect_to hybrid_places_path(hybrid)
+        if current_user = @hybrid_place.hybrid.user
+           hybrid_place.destroy
+           redirect_to hybrid_places_path(hybrid)
+        else
+            render :index
+        end
 
 
     end
