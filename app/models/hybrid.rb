@@ -8,4 +8,6 @@ class Hybrid < ActiveRecord::Base
     accepts_nested_attributes_for :places
 
     scope :ram_hybrids, -> { where(species: "Ram Hybrid") }
+    scope :tree_hybrids, -> { where(species: "Tree Hybrid") }
+    scope :trout_hybrids, -> { where(species: "Trout Hybrid") }
 end

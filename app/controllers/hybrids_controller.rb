@@ -8,6 +8,8 @@ class HybridsController < ApplicationController
         
         @hybrid = Hybrid.find_by(id: params[:id])
         @hybrids = Hybrid.ram_hybrids
+        @trees = Hybrid.tree_hybrids
+        @trout = Hybrid.trout_hybrids
         
         if @hybrid
             render :show

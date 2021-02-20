@@ -72,7 +72,7 @@ class PlacesController < ApplicationController
     private
 
          def place_params
-            params.require(:place).permit(:name, :location, :atmosphere, :status, :image, :hybrid_id, places: [ids: []])
+            params.require(:place).permit(:name, :location, :atmosphere, :status, :image, :user_id)
          end
 
 end

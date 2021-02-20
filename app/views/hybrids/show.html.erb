@@ -6,9 +6,7 @@
 <h4><%= link_to "Hybrid's Friends", hybrid_friends_path(@hybrid) %></h4>
 <h4><%= link_to "Places Hybrid Has Been", hybrid_places_path(@hybrid) %></h4>
 <h4><%= link_to "Hybrid's Motorhomes", hybrid_motorhomes_path(@hybrid) %></h4>
-<% @hybrids.each do |hybrid| %>
-<%= hybrid.name %>
-<% end %>
+
 
 <% if current_user == @hybrid.user %>
  <h4><%= link_to "Submit New Friend", new_hybrid_friend_path(@hybrid) %></h4>
@@ -16,4 +14,19 @@
  <h4><%= link_to "Submit New Motorhome", new_hybrid_motorhome_path(@hybrid) %></h4>
  <h4><%= link_to "Modify the Hybrid", edit_hybrid_path(@hybrid) %></h4>
  <h4><%= link_to "Scrub Hybrid from Database", @hybrid, method: :delete %></h4>
+<% end %>
+
+<h1> Ram Hybrids </h1>
+<% @hybrids.each do |hybrid| %>
+<h3><%= link_to hybrid.name, hybrid_path(hybrid) %></h3>
+<% end %>
+
+<h1> Tree Hybrids </h1>
+<% @trees.each do |tree| %>
+<h3><%= link_to tree.name, hybrid_path(tree) %></h3>
+<% end %>
+
+<h1> Trout Hybrids </h1>
+<% @trout.each do |trout| %>
+<h3><%= link_to trout.name, hybrid_path(trout) %></h3>
 <% end %>
