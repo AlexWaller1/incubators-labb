@@ -1,5 +1,5 @@
 <h1>Motorhomes</h1>
-
+<h3><%= flash[:notice] if flash[:notice] %></h3>
 <% @motorhomes.each do |f| %>
 <h2><%= link_to f.model, hybrid_motorhome_path(f.hybrid, f) %></h2>
 <h3><%= f.year %></h3>

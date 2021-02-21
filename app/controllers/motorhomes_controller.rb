@@ -55,7 +55,7 @@ class MotorhomesController < ApplicationController
         @motorhome = Motorhome.find(params[:id])
         if current_user == @motorhome.hybrid.user
             @motorhome.destroy
-            flash[:notice] = "Motorhome Scrubbed from Database"
+            flash[:notice] = "Motorhome Scrubbed From Database"
             redirect_to hybrid_motorhomes_path
         else
             redirect_to hybrid_motorhomes_path

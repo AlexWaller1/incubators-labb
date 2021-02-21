@@ -1,4 +1,5 @@
 <h1>Hybrids</h1>
+<h3><%= flash[:notice] if flash[:notice] %></h3>
 <% @hybrids.each do |f| %>
 <h2><%= link_to f.name, hybrid_path(f) %></h2>
 <h3><%= f.species %></h3>

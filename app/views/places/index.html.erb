@@ -1,5 +1,6 @@
 <h1> Locations Database </h1>
-
+<h3><%= flash[:notice] if flash[:notice] %></h3>
 <% @places.each do |place| %>
-<h3><%= link_to place.name, place_path(place)%></h3>
+<h2><%= link_to place.name, place_path(place)%></h2>
+<h3><%= place.location %></h3>
 <% end %>
