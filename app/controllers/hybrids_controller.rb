@@ -45,27 +45,23 @@ class HybridsController < ApplicationController
 
     def update
         @hybrid = Hybrid.find(params[:id])
-        if current_user == @hybrid.user
+        redirect_if_not_hybrid
          if @hybrid.update(hybrid_params)
           redirect_to hybrid_path(@hybrid)
          else
           @error = "Hybrid Name Must Be Entered."
           render :edit
         end
-        else
-          redirect_to hybrids_path
-        end
+        
     end
 
     def destroy
         @hybrid = Hybrid.find(params[:id])
-        if current_user == @hybrid.user
+        redirect_if_not_hybrid
           @hybrid.destroy
           flash[:notice] = "Hybrid Scrubbed from Database"
           redirect_to hybrids_path
-        else
-          redirect_to hybrids_path
-        end
+        
     end
 
 

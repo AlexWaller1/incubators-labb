@@ -39,27 +39,23 @@ class MotorhomesController < ApplicationController
 
     def update
         @motorhome = Motorhome.find(params[:id])
-        if current_user == @motorhome.hybrid.user
+        redirect_if_not_motorhome
          if @motorhome.update(motorhome_params)
           redirect_to hybrid_motorhome_path(hybrid_id: @motorhome.hybrid_id, id: @motorhome.id)
         else
          @error = "Motorhomes Must Have Model Type Entered."
          render :edit
         end
-       else
-        redirect_to hybrid_motorhome_path(@motorhome.hybrid, @motorhome)
-       end
+       
     end
 
     def destroy
         @motorhome = Motorhome.find(params[:id])
-        if current_user == @motorhome.hybrid.user
+        redirect_if_not_motorhome
             @motorhome.destroy
             flash[:notice] = "Motorhome Scrubbed From Database"
             redirect_to hybrid_motorhomes_path
-        else
-            redirect_to hybrid_motorhomes_path
-        end
+        
     end
 
     private

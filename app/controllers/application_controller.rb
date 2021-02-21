@@ -23,4 +23,39 @@ class ApplicationController < ActionController::Base
     def redirect_to_home_page
         redirect_to root_path
     end
+
+    def redirect_if_not_hybrid
+        if current_user == @hybrid.user
+        else
+            redirect_to hybrids_path
+        end
+    end
+
+    def redirect_if_not_motorhome
+        if current_user == @motorhome.hybrid.user
+        else
+            redirect_to hybrid_motorhomes_path
+        end
+    end
+
+    def redirect_if_not_friend
+        if current_user == @friend.hybrid.user
+        else
+           redirect_to hybrid_friends_path
+        end
+    end
+
+    def redirect_if_not_place
+        if current_user == @place.user
+        else
+            redirect_to places_path
+        end
+    end
+
+    def redirect_if_not_hybrid_place
+        if current_user == @hybrid_place.hybrid.user
+        else
+            redirect_to hybrid_places_path
+        end
+    end
 end

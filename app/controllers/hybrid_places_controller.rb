@@ -51,23 +51,21 @@ class HybridPlacesController < ApplicationController
 
     def update
         @hybrid_place = HybridPlace.find(params[:id])
-        if current_user == @hybrid_place.hybrid.user
+        redirect_if_not_hybrid_place
          if @hybrid_place.update(hybrid_place_params)
             redirect_to hybrid_places_path(@hybrid_place.hybrid_id)
          else
             @error = "Place Must Have Address Entered."
             render :edit
          end
-        else
-            redirect_to hybrid_places_path
-        end
+       
 
     end
 
     def destroy
         hybrid_place = HybridPlace.find(params[:id])
         hybrid = hybrid_place.hybrid
-        if current_user == @hybrid_place.hybrid.user
+        if current_user == hybrid_place.hybrid.user
            hybrid_place.destroy
            redirect_to hybrid_places_path(hybrid)
         else
