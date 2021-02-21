@@ -58,4 +58,10 @@ class ApplicationController < ActionController::Base
             redirect_to hybrid_places_path
         end
     end
+
+    def scope_methods
+        @hybrids = Hybrid.ram_hybrids
+        @trees = Hybrid.tree_hybrids
+        @trout = Hybrid.trout_hybrids
+    end
 end
