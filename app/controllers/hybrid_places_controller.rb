@@ -7,8 +7,13 @@ class HybridPlacesController < ApplicationController
     end
 
     def show
-        @hybrid_place = HybridPlace.find(params[:id])
-        redirect_to edit_hybrid_place_path
+        @hybrid_place = HybridPlace.find_by(id: params[:id])
+          if @hybrid_place
+            redirect_to edit_hybrid_place_path
+          else
+            redirect_to edit_hybrid_place_path
+          end
+        
     end
 
     def new
@@ -30,17 +35,23 @@ class HybridPlacesController < ApplicationController
 
     def edit
         
-        @hybrid_place = HybridPlace.find(params[:id])
-        if current_user = @hybrid_place.hybrid.user
+        @hybrid_place = HybridPlace.find_by(id: params[:id])
+        if @hybrid_place
+          if current_user == @hybrid_place.hybrid.user
             render :edit
+         else
+            redirect_to hybrid_places_path
+         end
         else
             redirect_to hybrid_places_path
         end
+        
+
     end
 
     def update
         @hybrid_place = HybridPlace.find(params[:id])
-        if current_user = @hybrid_place.hybrid.user
+        if current_user == @hybrid_place.hybrid.user
          if @hybrid_place.update(hybrid_place_params)
             redirect_to hybrid_places_path(@hybrid_place.hybrid_id)
          else
@@ -56,7 +67,7 @@ class HybridPlacesController < ApplicationController
     def destroy
         hybrid_place = HybridPlace.find(params[:id])
         hybrid = hybrid_place.hybrid
-        if current_user = @hybrid_place.hybrid.user
+        if current_user == @hybrid_place.hybrid.user
            hybrid_place.destroy
            redirect_to hybrid_places_path(hybrid)
         else

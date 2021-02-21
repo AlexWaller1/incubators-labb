@@ -3,16 +3,20 @@
 <img src="<%= @place.image %>" alt="Place Image">
 <h3><%= @place.atmosphere %></h3>
  <h4><%= @place.status %></h4>
+ 
+ <h2> Addresses Hybrids Stayed At </h2>
  <% @hybrid_places.each do |hybrid_place| %>
  <h4><%= hybrid_place.address %> </h4>
  <% end %>
 
 
- 
-<h4><%= link_to "Modify Place Information", edit_place_path( @place)%></h4>
-<h4><%= link_to "Scrub Place Information", place_path(@place), method: "delete" %></h4>
-
 <h2> Hybrids Who Have Been To This Location </h2>
 <% @place.hybrids.each do |hybrid| %>
 <h4><%= link_to hybrid.name, hybrid_path(hybrid) %></h4>
+<% end %>
+
+<% if current_user == @place.user %>
+<h3> Modify and Redact Information </h3>
+<h4><%= link_to "Modify Place Information", edit_place_path( @place)%></h4>
+<h4><%= link_to "Scrub Place Information", place_path(@place), method: "delete" %></h4>
 <% end %>
