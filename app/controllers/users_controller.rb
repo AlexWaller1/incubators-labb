@@ -12,7 +12,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to hybrids_path
         else
-            @error = @user.errors.full_messages
+            @error = "Invalid Credentials"
             render :new
         end
     end
