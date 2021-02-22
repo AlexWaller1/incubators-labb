@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
 
     def index
-
+        
         @places = Place.all
         
     end
@@ -52,6 +52,12 @@ class PlacesController < ApplicationController
           render :edit
          end
         
+    end
+
+    def location
+        
+        place = Place.find_by(location: params[:location])
+        redirect_to place_path(place)
     end
 
     def destroy

@@ -67,6 +67,7 @@ class HybridPlacesController < ApplicationController
         hybrid = hybrid_place.hybrid
         if current_user == hybrid_place.hybrid.user
            hybrid_place.destroy
+           flash[:notice] = "Hybrid's Place Scrubbed From Database"
            redirect_to hybrid_places_path(hybrid)
         else
             render :index

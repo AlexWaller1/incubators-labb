@@ -1,6 +1,13 @@
 <h1> Locations Database </h1>
 <h3><%= flash[:notice] if flash[:notice] %></h3>
+
+<%= form_tag(location_places_path, method: :post) do %>
+<%= select_tag(:location, options_for_select(Place.all.map{|place| place.location}.select{|location| location != ""})) %>
+<%= submit_tag ("Submit") %>
+<% end %>
+
 <% @places.each do |place| %>
+
 <h2><%= link_to place.name, place_path(place)%></h2>
 <h3><%= place.location %></h3>
 <% end %>
