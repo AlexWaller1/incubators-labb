@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     before_action :verified_user
     helper_method :current_user
 
-     
+    
     
      private
 
@@ -64,4 +64,6 @@ class ApplicationController < ActionController::Base
         @trees = Hybrid.tree_hybrids
         @trout = Hybrid.trout_hybrids
     end
+
+    
 end
