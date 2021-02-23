@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
   
   # will nest these routes later
-  resources :users, only: [:new,:create]
+  #resources :users, only: [:new,:create]
 
   
   get "/login", to: "sessions#new", as:"login"
