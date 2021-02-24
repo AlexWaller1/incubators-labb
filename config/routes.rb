@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   #/hybrids/:hybrid_id/friends/:id
   resources :hybrids do
     resources :friends
+    resources :minimarts, :controller => 'hybrid_minimarts'
+   
     resources :motorhomes
     resources :places, :controller => 'hybrid_places'
   end
@@ -16,6 +18,9 @@ Rails.application.routes.draw do
       #collection removes the :place_id
       post :location 
     end
+  end
+  resources :minimarts do
+    resources :sodas
   end
   
   # will nest these routes later

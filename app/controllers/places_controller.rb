@@ -56,8 +56,8 @@ class PlacesController < ApplicationController
 
     def location
         
-        place = Place.find_by(location: params[:location])
-        redirect_to place_path(place)
+        @places = Place.where(location: params[:location])
+        render :index
     end
 
     def destroy

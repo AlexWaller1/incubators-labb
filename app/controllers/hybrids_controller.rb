@@ -5,7 +5,6 @@ class HybridsController < ApplicationController
     end
 
     def show
-        
         @hybrid = Hybrid.find_by(id: params[:id])
         scope_methods
         
