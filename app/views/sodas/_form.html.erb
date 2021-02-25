@@ -1,0 +1,5 @@
+<%= form_for([@soda.minimart, @soda]) do |f| %>
+<%= f.hidden_field :minimart_id, value: @soda.minimart_id %>
+
+<%= f.label :name, "Name" %><br>
+<%= f.text_field :name %><br>

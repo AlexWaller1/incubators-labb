@@ -1,0 +1,9 @@
+<h1><%= @minimart.name %></h1>
+<h2><%= @minimart.address %></h2>
+<h2><%= @minimart.state %></h2>
+<h3><%= @minimart.sodamachine %></h3>
+<h3><%= @minimart.description %></h3>
+
+
+<h4><%= link_to "Modify Minimart Information", edit_minimart_path(@minimart) %></h4>
+<h4><%= link_to "Scrub Minimart From Database", @minimart, method: :delete %></h4>

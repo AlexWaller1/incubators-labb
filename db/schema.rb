@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_21_042339) do
+ActiveRecord::Schema.define(version: 2021_02_24_225844) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 2021_02_21_042339) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.string "state"
+    t.index ["user_id"], name: "index_minimarts_on_user_id"
   end
 
   create_table "motorhomes", force: :cascade do |t|
@@ -85,6 +88,8 @@ ActiveRecord::Schema.define(version: 2021_02_21_042339) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "minimart_id"
+    t.index ["minimart_id"], name: "index_sodas_on_minimart_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,5 @@
+<h1> Minimarts </h1>
+<% @minimarts.each do |f| %>
+<h3><%= link_to f.name, minimart_path(f) %></h3>
+<% end %>
+

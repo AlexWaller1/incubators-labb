@@ -6,7 +6,7 @@ class Hybrid < ActiveRecord::Base
     has_many :places, through: :hybrid_places
     has_many :motorhomes
     accepts_nested_attributes_for :places
-    accepts_nested_attributes_for :minimarts
+    has_many :minimarts
 
     scope :ram_hybrids, -> { where(species: "Ram Hybrid") }
     scope :tree_hybrids, -> { where(species: "Tree Hybrid") }
