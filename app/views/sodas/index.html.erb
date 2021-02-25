@@ -1,0 +1,6 @@
+<h1> Sodas </h1>
+
+<% @sodas.each do |f| %>
+<h2><%= link_to f.name, minimart_soda_path(f.minimart, f) %></h2>
+<h3><%= f.company %></h3>
+<% end %>

@@ -14,7 +14,11 @@ class SodasController < ApplicationController
 
     def create
         @soda = Soda.new(soda_params)
+        if @soda.save
         redirect_to minimart_sodas_path(@soda.minimart, @soda)
+        else
+        render :new
+        end
     end
 
     def edit
@@ -23,8 +27,11 @@ class SodasController < ApplicationController
 
     def update
         @soda = Soda.find(params[:id])
-        @soda.update
+        if @soda.update(soda_params)
         redirect_to minimart_sodas_path(@soda.minimart, @soda)
+        else
+            render :edit
+        end
     end
 
     def destroy
