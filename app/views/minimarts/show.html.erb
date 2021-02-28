@@ -6,6 +6,17 @@
 <h3><%= @minimart.description %></h3>
 <h3><%= link_to "Minimart's Soda Selection", minimart_sodas_path(@minimart) %></h3>
 
+<h2> Hybrids' Visit Logs </h2>
+<% @hybrid_minimarts.each do |hybrid_minimart| %>
+<h4><%= hybrid_minimart.visit_log %></h4>
+<% end %>
+
+<h2> Hybrids Who Have Been To This Minimart </h2>
+<% @minimart.hybrids.each do |hybrid| %>
+<h4><%= link_to hybrid.name, hybrid_path(hybrid) %></h4>
+<% end %>
+
+<h2> Modify Minimart Data </h2>
 <h4><%= link_to "Submit New Soda", new_minimart_soda_path(@minimart) %>
 <h4><%= link_to "Modify Minimart Information", edit_minimart_path(@minimart) %></h4>
 <h4><%= link_to "Scrub Minimart From Database", @minimart, method: :delete %></h4>

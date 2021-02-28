@@ -6,6 +6,7 @@ class MinimartsController < ApplicationController
 
     def show
         @minimart = Minimart.find_by(id: params[:id])
+        @hybrid_minimarts = HybridMinimart.where(minimart: @minimart)
     end
 
     def new

@@ -16,7 +16,11 @@ class HybridMinimartsController < ApplicationController
 
     def create
         @hybrid_minimart = HybridMinimart.new(hybrid_minimart_params)
-        @hybrid_minimart.save
+        if @hybrid_minimart.save
+            redirect_to hybrid_minimart_path(@hybrid_minimart.hybrid)
+        else
+            render :new
+        end
     end
 
     def edit
