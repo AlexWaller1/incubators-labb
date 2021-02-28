@@ -1,0 +1,16 @@
+<%= form_for(@skateboarder) do |f| %>
+
+<%= f.hidden_field :skatepark_id, value: @skateboarder.skatepark.id %>
+
+<%= f.label :name, "Name" %>
+<%= f.text_field :name %>
+
+<%= f.label :experience, "Experience" %>
+<%= f.text_field :experience %>
+
+<%= f.label :favorite_spots, "Favorite Spots" %>
+<%= f.text_field :favorite_spots %>
+
+<%= f.submit %>
+
+<% end %>
