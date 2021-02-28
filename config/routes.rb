@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     end
     resources :sodas
   end
+
+  resources :skateparks do
+    resources :skateboarders
+  end
   
   # will nest these routes later
   #resources :users, only: [:new,:create]
