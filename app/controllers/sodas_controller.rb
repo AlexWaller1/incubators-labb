@@ -17,6 +17,7 @@ class SodasController < ApplicationController
         if @soda.save
         redirect_to minimart_sodas_path(@soda.minimart, @soda)
         else
+        @error = "Name of Soda Must Be Entered"
         render :new
         end
     end
@@ -36,6 +37,7 @@ class SodasController < ApplicationController
           if @soda.update(soda_params)
              redirect_to minimart_sodas_path(@soda.minimart, @soda)
           else
+             @error = "Name of Soda Must Be Entered"
              render :edit
           end
         
@@ -45,6 +47,7 @@ class SodasController < ApplicationController
         @soda = Soda.find(params[:id])
         redirect_if_not_soda
         @soda.destroy
+        flash[:notice] = "Soda Scrubbed From Database"
         redirect_to minimart_sodas_path
         
     end

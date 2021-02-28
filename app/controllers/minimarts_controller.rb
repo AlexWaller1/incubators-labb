@@ -23,6 +23,7 @@ class MinimartsController < ApplicationController
         if @minimart.save
         redirect_to minimart_path(@minimart)
         else
+            @error = "Name and State Of Minimart Must Be Entered"
             render :new
         end
 
@@ -44,7 +45,9 @@ class MinimartsController < ApplicationController
           if @minimart.update(minimart_params)
           redirect_to minimart_path(@minimart)
           else
+          @error = "Name and State of Minimart Must Be Entered"
           render :edit
+          
           end
         
     end
@@ -52,6 +55,7 @@ class MinimartsController < ApplicationController
     def destroy
         @minimart = Minimart.find(params[:id])
         if_not_minimart
+        flash[:notice] = "Minimart Scrubbed From Database"
         @minimart.destroy
         redirect_to minimarts_path
         

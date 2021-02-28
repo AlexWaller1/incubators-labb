@@ -1,5 +1,7 @@
 <h1> Minimarts </h1>
 
+<h4><%= flash[:notice] if flash[:notice] %></h4>
+
 <%= form_tag(state_minimarts_path, method: :post) do %>
 <%= select_tag(:state, options_for_select(Minimart.all.map{|m| m.state})) %>
 <%= submit_tag ("Submit") %>
