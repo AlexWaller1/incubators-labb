@@ -1,4 +1,4 @@
-class SkateparkController < ApplicationController
+class SkateparksController < ApplicationController
 
     def index
         @skateparks = Skatepark.all
@@ -13,8 +13,12 @@ class SkateparkController < ApplicationController
     end
 
     def create
-        @skatepark = Skatepark.find(params[:id])
-        @skatepark.create
+        @skatepark = Skatepark.new(skatepark_params)
+        if @skatepark.save
+            redirect_to skateparks_path
+        else
+            render :new
+        end
     end
 
     def edit
@@ -23,17 +27,24 @@ class SkateparkController < ApplicationController
 
     def update
         @skatepark = Skatepark.find(params[:id])
-        @skatepark.update
+        if @skatepark.update
+            redirect_to skatepark_path(@skatepark)
+        else
+            render :edit
+        end
     end
 
     def destroy
         @skatepark = Skatepark.find(params[:id])
         @skatepark.destroy
+        redirect_to skatepark_path
     end
 
     private
 
     def skatepark_params
+
+        params.require(:skatepark).permit(:name, :town, :state, :specialty, :user_id)
 
     end
 

@@ -1,0 +1,8 @@
+<h1> Skateparks </h1>
+
+<% @skateparks.each do |s| %>
+<h2><%= link_to s.name, skatepark_path(s) %></h2>
+<h3><%= s.state %></h3>
+
+<% end %>
+

@@ -1,0 +1,18 @@
+<%= form_for(@skatepark) do |s| %>
+<%= s.hidden_field :user_id, value: @skatepark.user.id %>
+
+<%= s.label :name, "Name" %><br>
+<%= s.text_field :name %><br>
+
+<%= s.label :town, "Town" %><br>
+<%= s.text_field :town %><br>
+
+<%= s.label :state, "State" %><br>
+<%= s.text_field :state %><br>
+
+<%= s.label :specialty, "Specialty" %><br>
+<%= s.text_field :specialty %><br>
+
+<%= s.submit %><br>
+
+<% end %>
