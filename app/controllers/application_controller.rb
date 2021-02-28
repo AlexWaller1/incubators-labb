@@ -65,5 +65,19 @@ class ApplicationController < ActionController::Base
         @trout = Hybrid.trout_hybrids
     end
 
+    def if_not_minimart
+        if current_user == @minimart.user
+        else
+            redirect_to minimart_path(@minimart)
+        end
+    end
+
+    def redirect_if_not_soda
+        if current_user == @soda.minimart.user
+        else
+            redirect_to minimart_soda_path(@soda.minimart, @soda)
+        end
+    end
+
     
 end

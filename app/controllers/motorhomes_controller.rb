@@ -7,6 +7,7 @@ class MotorhomesController < ApplicationController
 
     def show
         @motorhome = Motorhome.find_by(id: params[:id])
+         
         if @motorhome
             render :show
         else

@@ -7,6 +7,11 @@ class MinimartsController < ApplicationController
     def show
         @minimart = Minimart.find_by(id: params[:id])
         @hybrid_minimarts = HybridMinimart.where(minimart: @minimart)
+        if @minimart
+            render :show
+        else 
+            redirect_to minimarts_path
+        end
     end
 
     def new
@@ -25,21 +30,36 @@ class MinimartsController < ApplicationController
 
     def edit
         @minimart = Minimart.find(params[:id])
+        if current_user == @minimart.user
+            render :edit
+        else
+            redirect_to minimart_path(@minimart)
+        end
+        
     end
 
     def update
         @minimart = Minimart.find(params[:id])
-        if @minimart.update(minimart_params)
-        redirect_to minimart_path(@minimart)
-        else
-        render :edit
-        end
+        if_not_minimart
+          if @minimart.update(minimart_params)
+          redirect_to minimart_path(@minimart)
+          else
+          render :edit
+          end
+        
     end
 
     def destroy
         @minimart = Minimart.find(params[:id])
+        if_not_minimart
         @minimart.destroy
         redirect_to minimarts_path
+        
+    end
+
+    def state
+        @minimarts = Minimart.where(state: params[:state])
+        render :index
     end
 
     private

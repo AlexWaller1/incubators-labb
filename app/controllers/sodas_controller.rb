@@ -23,21 +23,30 @@ class SodasController < ApplicationController
 
     def edit
         @soda = Soda.find(params[:id])
+        if current_user == @soda.minimart.user
+            render :edit
+        else
+            redirect_to minimart_soda_path(@soda.minimart, @soda)
+        end
     end
 
     def update
         @soda = Soda.find(params[:id])
-        if @soda.update(soda_params)
-        redirect_to minimart_sodas_path(@soda.minimart, @soda)
-        else
-            render :edit
-        end
+        redirect_if_not_soda
+          if @soda.update(soda_params)
+             redirect_to minimart_sodas_path(@soda.minimart, @soda)
+          else
+             render :edit
+          end
+        
     end
 
     def destroy
         @soda = Soda.find(params[:id])
+        redirect_if_not_soda
         @soda.destroy
         redirect_to minimart_sodas_path
+        
     end
 
     private

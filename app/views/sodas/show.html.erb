@@ -4,5 +4,7 @@
 <h3><%= @soda.availability %></h3>
 <h4><%= @soda.description %></h4>
 
+<% if current_user == @soda.minimart.user %>
 <h5><%= link_to "Modify The Soda", edit_minimart_soda_path(@soda.minimart, @soda) %></h5>
 <h5><%= link_to "Scrub Soda Information", minimart_soda_path(@soda.minimart, @soda), method: :delete %></h5>
+<% end %>

@@ -16,7 +16,9 @@
 <h4><%= link_to hybrid.name, hybrid_path(hybrid) %></h4>
 <% end %>
 
+<% if current_user == @minimart.user %>
 <h2> Modify Minimart Data </h2>
 <h4><%= link_to "Submit New Soda", new_minimart_soda_path(@minimart) %>
 <h4><%= link_to "Modify Minimart Information", edit_minimart_path(@minimart) %></h4>
 <h4><%= link_to "Scrub Minimart From Database", @minimart, method: :delete %></h4>
+<% end %>

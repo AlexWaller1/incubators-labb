@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     end
   end
   resources :minimarts do
+    collection do
+      post :state
+    end
     resources :sodas
   end
   

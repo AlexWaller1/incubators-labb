@@ -5,6 +5,8 @@
 <h4><%= @motorhome.features %></h4>
 <h4><%= @motorhome.history %></h4>
 
+
+
 <% if current_user == @motorhome.hybrid.user %>
 <%= link_to "Modify Motorhome Information", edit_hybrid_motorhome_path(@motorhome.hybrid, @motorhome) %>
 <%= link_to "Scrub Motorhome Information", hybrid_motorhome_path(@motorhome.hybrid, @motorhome), method: "delete" %>
