@@ -43,7 +43,7 @@ class SodasController < ApplicationController
     private
 
     def soda_params
-        params.require(:soda).permit(:name, :company, :availability, :description, :minimart_id)
+        params.require(:soda).permit(:name, :company, :availability, :description, :image, :minimart_id)
     end
 
 

@@ -3,10 +3,13 @@ class Hybrid < ActiveRecord::Base
     belongs_to :user
     has_many :friends
     has_many :hybrid_places, dependent: :destroy
+    has_many :hybrid_minimarts, dependent: :destroy
     has_many :places, through: :hybrid_places
+    has_many :minimarts, through: :hybrid_minimarts
     has_many :motorhomes
     accepts_nested_attributes_for :places
-    has_many :minimarts
+    accepts_nested_attributes_for :minimarts
+   
 
     scope :ram_hybrids, -> { where(species: "Ram Hybrid") }
     scope :tree_hybrids, -> { where(species: "Tree Hybrid") }

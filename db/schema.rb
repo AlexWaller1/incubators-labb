@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_225844) do
+ActiveRecord::Schema.define(version: 2021_02_28_024141) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2021_02_24_225844) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["hybrid_id"], name: "index_friends_on_hybrid_id"
+  end
+
+  create_table "hybrid_minimarts", force: :cascade do |t|
+    t.text "visit_log"
+    t.integer "hybrid_id"
+    t.integer "minimart_id"
+    t.index ["hybrid_id"], name: "index_hybrid_minimarts_on_hybrid_id"
+    t.index ["minimart_id"], name: "index_hybrid_minimarts_on_minimart_id"
   end
 
   create_table "hybrid_places", force: :cascade do |t|
@@ -53,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_225844) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.string "state"
+    t.string "image"
     t.index ["user_id"], name: "index_minimarts_on_user_id"
   end
 
@@ -89,7 +98,14 @@ ActiveRecord::Schema.define(version: 2021_02_24_225844) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "minimart_id"
+    t.string "image"
     t.index ["minimart_id"], name: "index_sodas_on_minimart_id"
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.string "HybridMinimarts"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

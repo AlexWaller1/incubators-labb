@@ -2,6 +2,7 @@
 <h2><%= @minimart.address %></h2>
 <h2><%= @minimart.state %></h2>
 <h3><%= @minimart.sodamachine %></h3>
+<img src="<%= @minimart.image %>", alt="Minimart Image">
 <h3><%= @minimart.description %></h3>
 <h3><%= link_to "Minimart's Soda Selection", minimart_sodas_path(@minimart) %></h3>
 

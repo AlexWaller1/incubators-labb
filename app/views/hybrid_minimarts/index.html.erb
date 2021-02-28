@@ -1,0 +1,4 @@
+<h1> Minimarts </h1>
+<% @hybrid_minimarts.each do |hybrid_minimart| %>
+<h2><%= link_to hybrid_minimart.minimart.name, minimart_path(hybrid_minimart.minimart) %></h2>
+<% end %>

@@ -44,6 +44,6 @@ class MinimartsController < ApplicationController
     private
 
     def minimart_params
-        params.require(:minimart).permit(:name, :address, :sodamachine, :description, :state, :user_id)
+        params.require(:minimart).permit(:name, :address, :sodamachine, :description, :state, :image, :user_id)
     end
 end

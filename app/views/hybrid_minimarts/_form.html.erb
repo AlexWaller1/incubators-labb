@@ -1,0 +1,12 @@
+<%= form_for (@hybrid_minimart) do |f| %>
+<%= f.hidden_field :hybrid_id, value: @hybrid_minimart.hybrid_id %>
+
+<%= f.select :minimart_id, Minimart.all.map{|p| [p.name, p.id]} %><br>
+
+<%= f.label :visit_log, "Visit Log"%>
+<%= f.text_field :visit_log %><br>
+
+
+<%= f.submit %>
+
+<% end %>
