@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_024141) do
+ActiveRecord::Schema.define(version: 2021_02_28_074618) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -88,6 +88,21 @@ ActiveRecord::Schema.define(version: 2021_02_28_024141) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_places_on_user_id"
+  end
+
+  create_table "skateboarders", force: :cascade do |t|
+    t.string "name"
+    t.string "experience"
+    t.text "favorite_spots"
+    t.integer "skatepark_id"
+    t.index ["skatepark_id"], name: "index_skateboarders_on_skatepark_id"
+  end
+
+  create_table "skateparks", force: :cascade do |t|
+    t.string "name"
+    t.string "town"
+    t.string "state"
+    t.string "specialty"
   end
 
   create_table "sodas", force: :cascade do |t|
