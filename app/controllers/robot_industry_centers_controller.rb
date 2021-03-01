@@ -1,4 +1,4 @@
-class RobotsIndustryCenters < ApplicationController
+class RobotIndustryCenters < ApplicationController
 
     def index
     end
