@@ -1,6 +1,9 @@
 <h1> Skateboarders </h1>
 
+<h4><%= flash[:notice] if flash[:notice] %>
+
 <% @skateboarders.each do |skater| %>
-<h2><%= link_to skater.name, skatepark_skateboarders_path(skater) %></h2>
+<h2><%= link_to skater.name, skatepark_skateboarder_path(skater.skatepark, skater) %></h2>
+<h3><%= skater.experience %></h3>
 
 <% end %>

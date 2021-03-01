@@ -1,16 +1,15 @@
-<%= form_for(@skateboarder) do |f| %>
-
+<%= form_for([@skateboarder.skatepark, @skateboarder]) do |f| %>
 <%= f.hidden_field :skatepark_id, value: @skateboarder.skatepark.id %>
 
-<%= f.label :name, "Name" %>
-<%= f.text_field :name %>
+<%= f.label :name, "Name" %><br>
+<%= f.text_field :name %><br>
 
-<%= f.label :experience, "Experience" %>
-<%= f.text_field :experience %>
+<%= f.label :experience, "Experience" %><br>
+<%= f.text_field :experience %><br>
 
-<%= f.label :favorite_spots, "Favorite Spots" %>
-<%= f.text_field :favorite_spots %>
+<%= f.label :favorite_spots, "Favorite Spots" %><br>
+<%= f.text_field :favorite_spots %><br>
 
-<%= f.submit %>
+<%= f.submit %><br>
 
 <% end %>

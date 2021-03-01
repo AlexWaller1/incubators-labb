@@ -1,1 +1,9 @@
 <h1><%= @skateboarder.name %></h1>
+<h2><%= @skateboarder.experience %></h2>
+<h3><%= @skateboarder.favorite_spots %></h2>
+
+<% if current_user == @skateboarder.skatepark.user %>
+<h3> Modify or Scrub Skateboarder Information </h3>
+<h4><%= link_to "Modify Skateboarder Information", edit_skatepark_skateboarder_path(@skateboarder.skatepark, @skateboarder) %></h4>
+<h4><%= link_to "Scrub Skateboarder Information From Database", skatepark_skateboarder_path(@skateboarder.skatepark, @skateboarder), method: :delete %></h4>
+<% end %>

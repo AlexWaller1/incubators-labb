@@ -1,4 +1,4 @@
-class SkateboarderController < ApplicationController
+class SkateboardersController < ApplicationController
 
     def index
         skatepark = Skatepark.find(params[:skatepark_id])
@@ -16,7 +16,7 @@ class SkateboarderController < ApplicationController
     def create
         @skateboarder = Skateboarder.new(skateboarder_params)
         if @skateboarder.save
-            redirect to skatepark_skateboarders_path(@skateboarder.skatepark, @skateboarder)
+            redirect_to skatepark_skateboarder_path(@skateboarder.skatepark, @skateboarder)
         else
             render :new
         end
@@ -24,20 +24,35 @@ class SkateboarderController < ApplicationController
 
     def edit
         @skateboarder = Skateboarder.find(params[:id])
+        if current_user == @skateboarder.skatepark.user
+            render :edit
+        else
+            redirect_to skatepark_skateboarder_path(@skateboarder.skatepark, @skateboarder)
+        end
     end
 
     def update
         @skateboarder = Skateboarder.find(params[:id])
-        if @skateboarder.update
-            redirect_to skatepark_skateboarders_path(@skateboarder.skatepark, @skateboarder)
-        else
+        if current_user == @skateboarder.skatepark.user
+          if @skateboarder.update(skateboarder_params)
+            redirect_to skatepark_skateboarder_path(@skateboarder.skatepark, @skateboarder)
+          else
             render :edit
+          end
+        else
+            redirect_to skatepark_skateboarders_path
+        end
     end
 
     def destroy
         @skateboarder = Skateboarder.find(params[:id])
+        if current_user == @skateboarder.skatepark.user
         @skateboarder.destroy
+        flash[:notice] = "Skateboarder Scrubbed From Database"
         redirect_to skatepark_skateboarders_path
+        else
+            redirect_to skatepark_skateboarders_path
+        end
     end
 
     private

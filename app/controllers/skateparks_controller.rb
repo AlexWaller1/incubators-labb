@@ -6,6 +6,11 @@ class SkateparksController < ApplicationController
 
     def show
         @skatepark = Skatepark.find_by(id: params[:id])
+        if @skatepark
+            render :show
+        else
+            redirect_to skateparks_path
+        end
     end
 
     def new
@@ -23,21 +28,34 @@ class SkateparksController < ApplicationController
 
     def edit
         @skatepark = Skatepark.find(params[:id])
+        if current_user == @skatepark.user
+            render :edit
+        else
+            redirect_to skatepark_path(@skatepark)
+        end
     end
 
     def update
         @skatepark = Skatepark.find(params[:id])
-        if @skatepark.update
+        if current_user == @skatepark.user
+          if @skatepark.update(skatepark_params)
             redirect_to skatepark_path(@skatepark)
-        else
+          else
             render :edit
+          end
+        else
+          redirect_to skateparks_path
         end
     end
 
     def destroy
         @skatepark = Skatepark.find(params[:id])
+        if current_user == @skatepark.user
         @skatepark.destroy
-        redirect_to skatepark_path
+        redirect_to skateparks_path
+        else
+            redirect_to skateparks_path
+        end
     end
 
     private
