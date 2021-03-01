@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_015623) do
+ActiveRecord::Schema.define(version: 2021_03_01_023748) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 2021_03_01_015623) do
     t.index ["user_id"], name: "index_hybrids_on_user_id"
   end
 
+  create_table "industry_centers", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.string "state"
+    t.text "performance"
+    t.string "image"
+    t.text "future_goals"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "minimarts", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -88,6 +99,27 @@ ActiveRecord::Schema.define(version: 2021_03_01_015623) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_places_on_user_id"
+  end
+
+  create_table "robots", force: :cascade do |t|
+    t.string "name"
+    t.string "model"
+    t.string "function"
+    t.string "personality"
+    t.string "image"
+    t.text "biography"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "robots_industry_centers", force: :cascade do |t|
+    t.integer "robots_id"
+    t.integer "industry_centers_id"
+    t.string "performance_review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["industry_centers_id"], name: "index_robots_industry_centers_on_industry_centers_id"
+    t.index ["robots_id"], name: "index_robots_industry_centers_on_robots_id"
   end
 
   create_table "skateboarders", force: :cascade do |t|
