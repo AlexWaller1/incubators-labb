@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_172758) do
+ActiveRecord::Schema.define(version: 2021_03_01_015623) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_02_28_172758) do
     t.string "experience"
     t.text "favorite_spots"
     t.integer "skatepark_id"
+    t.string "image"
     t.index ["skatepark_id"], name: "index_skateboarders_on_skatepark_id"
   end
 
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 2021_02_28_172758) do
     t.string "state"
     t.string "specialty"
     t.integer "user_id"
+    t.string "image"
     t.index ["user_id"], name: "index_skateparks_on_user_id"
   end
 

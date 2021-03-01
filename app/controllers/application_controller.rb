@@ -79,5 +79,19 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def redirect_if_not_skatepark
+        if current_user == @skatepark.user
+        else
+            redirect_to skateparks_path
+        end
+    end
+
+    def redirect_if_not_skateboarder
+        if current_user == @skateboarder.skatepark.user
+        else
+            redirect_to skatepark_skateboarders_path
+        end
+    end
+
     
 end

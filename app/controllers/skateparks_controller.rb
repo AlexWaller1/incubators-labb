@@ -37,32 +37,29 @@ class SkateparksController < ApplicationController
 
     def update
         @skatepark = Skatepark.find(params[:id])
-        if current_user == @skatepark.user
+        redirect_if_not_skatepark
           if @skatepark.update(skatepark_params)
             redirect_to skatepark_path(@skatepark)
           else
             render :edit
           end
-        else
-          redirect_to skateparks_path
-        end
+        
     end
 
     def destroy
         @skatepark = Skatepark.find(params[:id])
-        if current_user == @skatepark.user
+        redirect_if_not_skatepark
         @skatepark.destroy
+        flash[:notice] = "Skatepark Scrubbed From Database"
         redirect_to skateparks_path
-        else
-            redirect_to skateparks_path
-        end
+       
     end
 
     private
 
     def skatepark_params
 
-        params.require(:skatepark).permit(:name, :town, :state, :specialty, :user_id)
+        params.require(:skatepark).permit(:name, :town, :state, :specialty, :image, :user_id)
 
     end
 

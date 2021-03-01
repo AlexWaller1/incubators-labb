@@ -1,6 +1,7 @@
 <h1><%= @skatepark.name %></h1>
 <h2><%= @skatepark.town %></h2>
 <h2><%= @skatepark.state %></h2>
+<img src="<%= @skatepark.image %>", alt="Skatepark Image">
 <h3><%= @skatepark.specialty %></h3>
 
 <h2> Park's Skateboarders </h2>
@@ -10,4 +11,6 @@
 <h2> Modify and Scrub Information </h2>
 <h3><%= link_to "Modify Skatepark Information", edit_skatepark_path(@skatepark) %></h3>
 <h3><%= link_to "Submit New Skateboarder", new_skatepark_skateboarder_path(@skatepark) %></h3>
+<h3><%= link_to "Scrub Skateboard From Database", skatepark_path(@skatepark), method: :delete %></h3>
+
 <% end %>

@@ -7,6 +7,11 @@ class SkateboardersController < ApplicationController
 
     def show
         @skateboarder = Skateboarder.find(params[:id])
+        if @skateboarder
+            render :show
+        else
+            redirect_to skatepark_skateboarders_path
+        end
     end
 
     def new
@@ -33,32 +38,28 @@ class SkateboardersController < ApplicationController
 
     def update
         @skateboarder = Skateboarder.find(params[:id])
-        if current_user == @skateboarder.skatepark.user
+        redirect_if_not_skateboarder
           if @skateboarder.update(skateboarder_params)
             redirect_to skatepark_skateboarder_path(@skateboarder.skatepark, @skateboarder)
           else
             render :edit
           end
-        else
-            redirect_to skatepark_skateboarders_path
-        end
+        
     end
 
     def destroy
         @skateboarder = Skateboarder.find(params[:id])
-        if current_user == @skateboarder.skatepark.user
+        redirect_if_not_skateboarder
         @skateboarder.destroy
         flash[:notice] = "Skateboarder Scrubbed From Database"
         redirect_to skatepark_skateboarders_path
-        else
-            redirect_to skatepark_skateboarders_path
-        end
+        
     end
 
     private
 
     def skateboarder_params
-        params.require(:skateboarder).permit(:name, :experience, :favorite_spots, :skatepark_id)
+        params.require(:skateboarder).permit(:name, :experience, :favorite_spots, :image, :skatepark_id)
     end
 
 end

@@ -1,5 +1,6 @@
 <h1><%= @skateboarder.name %></h1>
 <h2><%= @skateboarder.experience %></h2>
+<img src="<%= @skateboarder.image %>", alt="Skateboarder Image">
 <h3><%= @skateboarder.favorite_spots %></h2>
 
 <% if current_user == @skateboarder.skatepark.user %>

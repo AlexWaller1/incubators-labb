@@ -1,8 +1,11 @@
 <h1> Skateparks </h1>
 
+<%= flash[:notice] if flash[:notice] %>
+
 <% @skateparks.each do |s| %>
 <h2><%= link_to s.name, skatepark_path(s) %></h2>
 <h3><%= s.state %></h3>
+<img src="<%= s.image %>", alt="Skatepark Image">
 
 <% end %>
 

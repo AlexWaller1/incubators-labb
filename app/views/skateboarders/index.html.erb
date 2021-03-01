@@ -5,5 +5,6 @@
 <% @skateboarders.each do |skater| %>
 <h2><%= link_to skater.name, skatepark_skateboarder_path(skater.skatepark, skater) %></h2>
 <h3><%= skater.experience %></h3>
+<img src="<%= skater.image %>", alt="Skateboarder Image">
 
 <% end %>
