@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_023748) do
+ActiveRecord::Schema.define(version: 2021_03_01_031152) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2021_03_01_023748) do
     t.text "future_goals"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_industry_centers_on_user_id"
   end
 
   create_table "minimarts", force: :cascade do |t|
@@ -110,6 +112,8 @@ ActiveRecord::Schema.define(version: 2021_03_01_023748) do
     t.text "biography"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_robots_on_user_id"
   end
 
   create_table "robots_industry_centers", force: :cascade do |t|

@@ -29,6 +29,12 @@ Rails.application.routes.draw do
   resources :skateparks do
     resources :skateboarders
   end
+
+  resources :industry_centers do
+    resources :robots, :controller => 'robots_industry_centers'
+  end
+
+  resources :robots
   
   # will nest these routes later
   #resources :users, only: [:new,:create]
