@@ -1,7 +1,7 @@
 <h1> Industry Centers </h1>
 
 <% @industry_centers.each do |i| %>
-<h2><%= link_to i.name, industry_centers_path %></h2>
+<h2><%= link_to i.name, industry_center_path(i) %></h2>
 <h3><%= i.city %></h3>
 <h3><%= i.state %></h3>
 <img src="<%= i.image %>", alt="Industry Center Image">

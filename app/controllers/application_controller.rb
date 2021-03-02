@@ -100,5 +100,12 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def redirect_if_not_industry_center
+        if current_user == @industry_center.user
+        else
+            redirect_to industry_center_path(@industry_center)
+        end
+    end
+
     
 end
