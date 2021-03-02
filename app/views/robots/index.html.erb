@@ -1,5 +1,7 @@
 <h1> Robots Manufactured By Antibi </h1>
 
+<h4><%= flash[:notice] if flash[:notice] %></h4>
+
 <% @robots.each do |robot| %>
 <h2><%= link_to robot.name, robot_path(robot) %></h2>
 <h3><%= robot.model %></h3>

@@ -1,0 +1,21 @@
+<%= form_for(@industry_center) do |i| %>
+<%= i.hidden_field :user_id, value: @industry_center.user.id %>
+
+<%= i.label :name, "Name" %><br>
+<%= i.text_field :name %><br>
+
+<%= i.label :city, "City" %><br>
+<%= i.text_field :city %><br>
+
+<%= i.label :state, "State" %><br>
+<%= i.text_field :state %><br>
+
+<%= i.label :performance, "Performance" %><br>
+<%= i.text_area :performance %><br>
+
+<%= i.label :image, "Image" %><br>
+<%= i.text_field :image %><br>
+
+<%= i.submit %>
+
+<% end %>

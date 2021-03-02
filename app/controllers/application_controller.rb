@@ -93,5 +93,12 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def redirect_if_not_robot
+        if current_user == @robot.user
+        else
+            redirect_to robot_path(@robot)
+        end
+    end
+
     
 end

@@ -38,28 +38,23 @@ class RobotsController < ApplicationController
 
     def update
         @robot = Robot.find(params[:id])
-        if current_user == @robot.user
+        redirect_if_not_robot
           if @robot.update(robot_params)
             redirect_to robot_path(@robot)
           else
             @error = "Robot Must Have Name"
             render :edit
           end
-        else
-            redirect_to robot_path(@path)
-        end
-
+        
     end
 
     def destroy
         @robot = Robot.find(params[:id])
-        if current_user == @robot.user
+        redirect_if_not_robot
            @robot.destroy
            flash[:notice] = "Robot Scrubbed From Database"
            redirect_to robots_path
-        else
-           redirect_to robots_path
-        end
+        
     end
 
     private
