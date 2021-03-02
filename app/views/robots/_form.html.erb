@@ -1,0 +1,24 @@
+<%= form_for(@robot) do |r| %>
+<%= r.hidden_field :user_id, value: @robot.user.id %>
+
+<%= r.label :name, "Name" %><br>
+<%= r.text_field :name %><br>
+
+<%= r.label :model, "Model" %><br>
+<%= r.text_field :model %><br>
+
+<%= r.label :function, "Function" %><br>
+<%= r.text_field :function %><br>
+
+<%= r.label :personality, "Personality" %><br>
+<%= r.text_field :personality %><br>
+
+<%= r.label :image, "Image" %><br>
+<%= r.text_field :image %><br>
+
+<%= r.label :biography, "Biography " %><br>
+<%= r.text_area :biography %><br>
+
+<%= r.submit %>
+
+<% end %>

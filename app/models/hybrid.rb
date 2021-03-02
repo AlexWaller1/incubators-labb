@@ -3,6 +3,7 @@ class Hybrid < ActiveRecord::Base
     belongs_to :user
     has_many :friends
     has_many :hybrid_places, dependent: :destroy
+    #if the hybrid is deleted then its hybrid_places and hybrid_minimarts will be destroyed too.
     has_many :hybrid_minimarts, dependent: :destroy
     has_many :places, through: :hybrid_places
     has_many :minimarts, through: :hybrid_minimarts

@@ -1,0 +1,8 @@
+<h1> Robots Manufactured By Antibi </h1>
+
+<% @robots.each do |robot| %>
+<h2><%= link_to robot.name, robot_path(robot) %></h2>
+<h3><%= robot.model %></h3>
+<h4><%= robot.function %></h4>
+<img src="<%= robot.image %>", alt="Robot Image">
+<% end %>

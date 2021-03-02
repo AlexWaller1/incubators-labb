@@ -1,0 +1,9 @@
+<h1><%= @robot.name %></h1>
+<h2><%= @robot.model %></h2>
+<h2><%= @robot.function %></h2>
+<img src="<%= @robot.image %>", alt="Robot Image">
+<h2><%= @robot.personality %></h2>
+<h3><%= @robot.biography %></h3>
+
+<h4><%= link_to "Modify the Robot", edit_robot_path(@robot) %></h4>
+<h4><%= link_to "Scrub Robot From Database", robot_path(@robot), method: :delete %><h4>
