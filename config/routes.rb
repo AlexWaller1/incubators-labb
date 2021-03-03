@@ -30,8 +30,10 @@ Rails.application.routes.draw do
     resources :skateboarders
   end
 
-  resources :industry_centers do
-    resources :robots, :controller => 'evaluations'
+  resources :industry_centers 
+
+  resources :supervisors do
+    resources :robots, :controller => 'supervisor_robots'
   end
 
   resources :robots

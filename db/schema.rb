@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_001910) do
+ActiveRecord::Schema.define(version: 2021_03_03_022206) do
 
   create_table "evaluations", force: :cascade do |t|
     t.integer "robot_id"
@@ -184,6 +184,8 @@ ActiveRecord::Schema.define(version: 2021_03_03_001910) do
     t.text "biography"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_supervisors_on_user_id"
   end
 
   create_table "tables", force: :cascade do |t|
