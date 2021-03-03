@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_031152) do
+ActiveRecord::Schema.define(version: 2021_03_03_001910) do
+
+  create_table "evaluations", force: :cascade do |t|
+    t.integer "robot_id"
+    t.integer "industry_center_id"
+    t.text "performance_review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["industry_center_id"], name: "index_evaluations_on_industry_center_id"
+    t.index ["robot_id"], name: "index_evaluations_on_robot_id"
+  end
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
@@ -155,6 +165,25 @@ ActiveRecord::Schema.define(version: 2021_03_01_031152) do
     t.integer "minimart_id"
     t.string "image"
     t.index ["minimart_id"], name: "index_sodas_on_minimart_id"
+  end
+
+  create_table "supervisor_robots", force: :cascade do |t|
+    t.text "evaluation"
+    t.integer "supervisor_id"
+    t.integer "robot_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["robot_id"], name: "index_supervisor_robots_on_robot_id"
+    t.index ["supervisor_id"], name: "index_supervisor_robots_on_supervisor_id"
+  end
+
+  create_table "supervisors", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "experience"
+    t.text "biography"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tables", force: :cascade do |t|

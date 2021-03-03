@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   resources :industry_centers do
-    resources :robots, :controller => 'robots_industry_centers'
+    resources :robots, :controller => 'evaluations'
   end
 
   resources :robots
