@@ -3,5 +3,7 @@
 <img src="<%= @supervisor.image %>", alt="Supervisor Image">
 <h3><%= @supervisor.biography %></h3>
 
+<%= if current_user == @supervisor.user %>
 <h4><%= link_to "Modify The Supervisor", edit_supervisor_path(@supervisor) %>
 <h4><%= link_to "Scrub Supervisor From Database", supervisor_path(@supervisor), method: :delete %></h4>
+<% end %>

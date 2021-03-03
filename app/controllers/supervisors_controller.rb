@@ -23,21 +23,30 @@ end
 
 def edit
     @supervisor = Supervisor.find(params[:id])
+    if current_user == @supervisor.user
+        render :edit
+    else
+        redirect_to supervisor_path(@supervisor)
+    end
 end
 
 def update
     @supervisor = Supervisor.find(params[:id])
-    if @supervisor.update(supervisor_params)
-        redirect_to supervisor_path(@supervisor)
-    else
-        render :edit
-    end
+    redirect_if_not_supervisor
+      if @supervisor.update(supervisor_params)
+          redirect_to supervisor_path(@supervisor)
+      else
+          render :edit
+      end
+   
 end
 
 def destroy
     @supervisor = Supervisor.find(params[:id])
-    @supervisor.destroy
-    redirect_to supervisors_path
+    redirect_if_not_supervisor
+      @supervisor.destroy
+      redirect_to supervisors_path
+    
 end
 
 private

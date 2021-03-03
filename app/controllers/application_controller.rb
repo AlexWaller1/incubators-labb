@@ -107,5 +107,12 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def redirect_if_not_supervisor
+        if current_user == @supervisor.user
+        else
+           redirect_to supervisor_path(@supervisor)
+        end
+    end
+
     
 end
