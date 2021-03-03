@@ -35,8 +35,9 @@ def update
 end
 
 def destroy
-    @supervisor = Supervisor.find(param[:id])
+    @supervisor = Supervisor.find(params[:id])
     @supervisor.destroy
+    redirect_to supervisors_path
 end
 
 private

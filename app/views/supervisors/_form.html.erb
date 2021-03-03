@@ -1,0 +1,18 @@
+<%= form_for(@supervisor) do |s| %>
+<%= s.hidden_field :user_id, value: @supervisor.user.id %>
+
+<%= s.label :name, "Name" %><br>
+<%= s.text_field :name %><br>
+
+<%= s.label :experience, "Experience" %><br>
+<%= s.text_field :experience %><br>
+
+<%= s.label :image, "Image" %><br>
+<%= s.text_field :image %><br>
+
+<%= s.label :biography, "Biography" %><br>
+<%= s.text_area :biography %><br>
+
+<%= s.submit %><br>
+
+<% end %>

@@ -1,0 +1,7 @@
+<h1> Supervisors </h1>
+
+<% @supervisors.each do |s| %>
+<h2><%= link_to s.name, supervisor_path(s) %></h2>
+<h3><%= s.experience %></h3>
+<img src="<%= s.image %>", alt="Supervisor Image">
+<% end %>

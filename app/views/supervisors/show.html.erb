@@ -1,0 +1,7 @@
+<h1><%= @supervisor.name %></h1>
+<h2><%= @supervisor.experience %></h2>
+<img src="<%= @supervisor.image %>", alt="Supervisor Image">
+<h3><%= @supervisor.biography %></h3>
+
+<h4><%= link_to "Modify The Supervisor", edit_supervisor_path(@supervisor) %>
+<h4><%= link_to "Scrub Supervisor From Database", supervisor_path(@supervisor), method: :delete %></h4>
